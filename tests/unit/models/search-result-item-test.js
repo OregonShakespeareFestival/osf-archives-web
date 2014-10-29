@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForModel('index', 'Index', {
+moduleForModel('search-result-item', 'SearchResultItem', {
   // Specify the other units that are required for this test.
   needs: []
 });
