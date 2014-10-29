@@ -1,0 +1,4 @@
+h1 Videos
+= group
+  = each model.data
+    video src="http://localhost:3000/downloads/{{unbound id}}?datastream_id=mp4" controls="controls" width="320" height="240"

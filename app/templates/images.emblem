@@ -1,0 +1,29 @@
+h1 Images
+#grid-gallery.grid-gallery
+  section.grid-wrap
+    ul.grid
+      li.grid-sizer
+      = group
+        = each model.data
+          li
+            figure
+              img src="http://localhost:3000/downloads/{{unbound id}}?datastream_id=thumbnail" alt=title
+              figcaption
+                h3
+                  =title
+  section.slideshow
+    ul
+      = group
+        = each model.data
+          li
+            figure
+              figcaption
+                h3
+                  =title
+              img src="http://localhost:3000/downloads/{{unbound id}}" alt=title
+    nav
+      span.icon.nav-prev
+      span.icon.nav-next
+      span.icon.nav-close
+    .info-keys.icon
+      | Navigate with arrow keys

@@ -1,0 +1,5 @@
+h1 Audio
+= group
+  = each model.data
+    audio controls="controls"
+      source src="http://localhost:3000/downloads/{{unbound id}}"

@@ -3,22 +3,8 @@
   =input class="js-search" placeholder="Enter search terms" value=model.searchTerm
   button{action 'search'} type="button"
     | Search
-.search-results
-  section.images
-    h1 Images
-    = each image in model.images.data
-      img src="http://localhost:3000/downloads/{{unbound image.id}}?datastream_id=thumbnail"
-  section.video
-    h1 Videos
-    = each video in model.videos.data
-      video src="http://localhost:3000/downloads/{{unbound video.id}}?datastream_id=mp4" controls="controls" width="320" height="240"
-  section.audio
-    h1 Audio
-    = each audio in model.audios.data
-      audio controls="controls"
-        source src="http://localhost:3000/downloads/{{unbound audio.id}}"
-  section.documents
-    h1 Documents
-    = each document in model.documents.data
-      a target="_blank" href="http://localhost:3000/downloads/{{unbound document.id}}"
-        = document.desc_metadata__title_tesim
+.container
+  outlet images
+  outlet videos
+  outlet audios
+  outlet documents
