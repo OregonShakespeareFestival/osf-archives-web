@@ -1,5 +1,8 @@
 section.videos
   h1 Videos
-  = group
-    = each model.data
-      video src="http://localhost:3000/downloads/{{unbound id}}?datastream_id=mp4" controls="controls" width="320" height="240"
+  ul.js-videos-grid.videos-grid
+    = group
+      = each model.data
+        li
+          a href="#" data-webm="http://localhost:3000/downloads/{{unbound id}}?datastream_id=webm" data-mp4="http://localhost:3000/downloads/{{unbound id}}?datastream_id=mp4" data-title=title data-description="This is a video"
+            img src="http://xmascashkitmembers.com/kit-download-access/wp-content/uploads/2013/05/video_placeholder.jpg" alt=""
