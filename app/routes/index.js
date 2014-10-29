@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import SearchResult from '../models/search-result';
 
 export default Ember.Route.extend({
   actions: {
