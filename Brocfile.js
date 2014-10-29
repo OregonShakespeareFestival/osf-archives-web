@@ -22,5 +22,6 @@ app.import('vendor/imagesloaded.pkgd.min.js')
 app.import('vendor/masonry.pkgd.min.js')
 app.import('vendor/classie.js')
 app.import('vendor/cbpGridGallery.js')
+app.import('vendor/group-helper.js')
 
 module.exports = app.toTree();
