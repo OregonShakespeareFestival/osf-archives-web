@@ -1,1 +1,9 @@
-=outlet
+header
+  h1 Welcome to the Archive
+  .search-the-archive
+    =input class="js-search" placeholder="Enter search terms" value=model.searchTerm
+    button{action 'search'} class="btn-primary" type="button"
+      | Search
+.main-content-region
+  =outlet
+footer

@@ -1,0 +1,56 @@
+%btn {
+  border-radius: 1px;
+  color: #fff;
+  display: inline-block;
+  cursor: pointer;
+  font-family: $primaryHeaderFont;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 0 20px;
+  line-height: 38px;
+  position: relative;
+  transition: all .3s;
+}
+
+.btn-group {
+  padding: 0;
+
+  * {
+    list-style: none;
+    float: left;
+  }
+
+  :first-child a {
+    border-radius: 1px 0 0 1px;
+  }
+
+  :last-child a {
+    border-radius: 0 1px 1px 0;
+  }
+}
+
+.btn-primary {
+  @extend %btn;
+  background-color: #014964;
+
+  &:hover {
+    background-color: darken(#014964, 5%);
+  }
+
+  &:active {
+    background-color: darken(#014964, 15%);
+  }
+}
+
+.btn-secondary {
+  @extend %btn;
+  background-color: rgba(0,0,0,.3);
+
+  &:hover {
+    background-color: rgba(0,0,0,.2);
+  }
+
+  &:active {
+    background-color: rgba(0,0,0,.1);
+  }
+}

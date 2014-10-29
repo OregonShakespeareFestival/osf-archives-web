@@ -1,0 +1,49 @@
+@import 'fonts';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color: #fff;
+  font-family: $primaryCopyFont;
+  padding: 0;
+  margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $primaryHeaderFont;
+  padding: 0;
+  margin: 0;
+  color: #000;
+}
+
+a {
+  color: #4ec3e0;
+  text-decoration: none;
+}
+
+a img
+{
+  border: none;
+}
+
+// States
+.is-hidden {
+  display: none;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.main-content-region > .ember-view {
+  height: 100%;
+}

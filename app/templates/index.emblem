@@ -1,8 +1,3 @@
-.hero
-  h1 Welcome to the Archive
-  =input class="js-search" placeholder="Enter search terms" value=model.searchTerm
-  button{action 'search'} type="button"
-    | Search
 .container
   outlet images
   outlet videos

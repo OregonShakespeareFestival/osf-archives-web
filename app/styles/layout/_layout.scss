@@ -1,0 +1,19 @@
+$maxWidth: 1000px;
+
+.main-content-region {
+  max-width: $maxWidth;
+  margin: 0 auto;
+
+  section.images,
+  section.videos,
+  section.audios,
+  section.documents {
+    clear: both;
+    margin: 10px 0 0;
+    padding: 20px 0 0;
+
+    h1 {
+      text-align: center;
+    }
+  }
+}

@@ -1,5 +1,6 @@
-h1 Documents
-= group
-  = each model.data
-    a target="_blank" href="http://localhost:3000/downloads/{{unbound id}}"
-      = title
+section.documents
+  h1 Documents
+  = group
+    = each model.data
+      a target="_blank" href="http://localhost:3000/downloads/{{unbound id}}"
+        = title
