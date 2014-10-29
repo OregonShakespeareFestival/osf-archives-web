@@ -17,4 +17,10 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+app.import('vendor/modernizr.custom.js')
+app.import('vendor/imagesloaded.pkgd.min.js')
+app.import('vendor/masonry.pkgd.min.js')
+app.import('vendor/classie.js')
+app.import('vendor/cbpGridGallery.js')
+
 module.exports = app.toTree();
