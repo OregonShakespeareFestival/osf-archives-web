@@ -23,5 +23,6 @@ app.import('vendor/masonry.pkgd.min.js')
 app.import('vendor/classie.js')
 app.import('vendor/cbpGridGallery.js')
 app.import('vendor/group-helper.js')
+app.import('vendor/video-grid.js')
 
 module.exports = app.toTree();
