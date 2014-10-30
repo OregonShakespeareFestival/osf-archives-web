@@ -35,6 +35,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.SUFIA_HOSTNAME = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
@@ -47,10 +49,12 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV.SUFIA_HOSTNAME = 'http://localhost:3000';
   }
 
   if (environment === 'production') {
-
+    ENV.SUFIA_HOSTNAME = 'http://hydra.osfashland.org';
   }
 
   return ENV;
