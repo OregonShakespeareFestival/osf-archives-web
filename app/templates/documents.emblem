@@ -2,5 +2,6 @@ section.documents
   h1 Documents
   = group
     = each model.data
-      a target="_blank" href="http://localhost:3000/downloads/{{unbound id}}"
+      a target="_blank" href="http://localhost:3000#{url}"
+        img src="http://localhost:3000#{thumb_url}" alt=title
         = title

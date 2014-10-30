@@ -4,5 +4,5 @@ section.videos
     = group
       = each model.data
         li
-          a href="#" data-webm="http://localhost:3000/downloads/{{unbound id}}?datastream_id=webm" data-mp4="http://localhost:3000/downloads/{{unbound id}}?datastream_id=mp4" data-title=title data-description="This is a video"
-            img src="http://xmascashkitmembers.com/kit-download-access/wp-content/uploads/2013/05/video_placeholder.jpg" alt=""
+          a href="#" data-webm="http://localhost:3000#{webm_url}" data-mp4="http://localhost:3000#{mp4}" data-title=title data-description=description
+            img src=thumbnail_url alt=title

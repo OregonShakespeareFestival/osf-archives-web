@@ -8,7 +8,7 @@ section.images
           = each model.data
             li
               figure
-                img src="http://localhost:3000/downloads/{{unbound id}}?datastream_id=thumbnail" alt=title
+                img src="http://localhost:3000#{thumbnail_url}" alt=title
                 figcaption
                   h3
                     =title
@@ -21,7 +21,7 @@ section.images
                 figcaption
                   h3
                     =title
-                img src="http://localhost:3000/downloads/{{unbound id}}" alt=title
+                img src="http://localhost:3000#{url}" alt=title
       nav
         span.icon.nav-prev
         span.icon.nav-next

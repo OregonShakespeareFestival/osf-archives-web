@@ -6,7 +6,9 @@ export default Ember.Route.extend({
       var term = $('.js-search').val();
       var _this = this;
       Ember.$.getJSON('http://localhost:3000/search_results.json?q=' + term, function(res) {
+
         var searchResult = _this.store.createRecord('search-result');
+
         searchResult.set('searchTerm', term);
         searchResult.set('filters', res.filters);
         searchResult.set('images', res.images);

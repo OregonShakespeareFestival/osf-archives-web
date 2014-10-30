@@ -5,7 +5,7 @@ export default Ember.View.extend({
       Ember.run.scheduleOnce('afterRender', function () {
         Ember.run.later(function() {
           new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
-        }, 2000);
+        }, 4000);
       });
   }
 });
