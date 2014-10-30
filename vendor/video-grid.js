@@ -205,6 +205,8 @@ var VideoGrid = (function() {
         this.positionPreview();
       }
 
+      // TODO: Figure out how to not render the metamore script tags from Ember in the .videos-grid
+      //        The extra <script> tags are causing the index to be 1 off.
       // update current value
       current = this.$item.index();
 
