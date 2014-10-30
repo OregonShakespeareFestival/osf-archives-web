@@ -241,6 +241,30 @@ span.nav-close:before {
   content: "\e604";
 }
 
+.paging {
+  clear: both;
+  padding: 20px;
+  text-align: center;
+  width: 350px;
+  margin: 0 auto;
+
+  a {
+    display: block;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    width: 150px;
+    float: left;
+
+    &:first-child {
+      float: left;
+    }
+    &:last-child {
+      float: right;
+    }
+  }
+}
+
 /* Example media queries (reduce number of columns and change slideshow layout) */
 
 @media screen and (max-width: 60em) {

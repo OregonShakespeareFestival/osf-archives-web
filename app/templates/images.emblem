@@ -12,6 +12,11 @@ section.images
                 figcaption
                   h3
                     =title
+    .paging
+      a{action 'prev'} href="#"
+        | PREV IMAGES
+      a{action 'next'} href="#"
+        | NEXT IMAGES
     section.slideshow
       ul
         = group
