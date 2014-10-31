@@ -13,10 +13,12 @@ section.images
                   h3
                     =title
     .paging
-      a{action 'prev'} href="#"
-        | PREV
-      a{action 'next'} href="#"
-        | NEXT
+      if hasPreviousPage
+        a{action 'prev'} href="#"
+          | PREV
+      if hasNextPage
+        a{action 'next'} href="#"
+          | NEXT
     section.slideshow
       ul
         = group

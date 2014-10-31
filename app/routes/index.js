@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  searchResult: null,
+  apiResponse: null,
   setupController: function (controller, model) {
     this.controllerFor('index').set('model', null);
     this.controllerFor('images').set('model', null);
@@ -31,47 +33,38 @@ export default Ember.Route.extend({
 
     var url = 'http://localhost:3000/search_results.json?' + queryString.join('&');
 
-    Ember.$.getJSON(url, function(res) {
+    Ember.$.getJSON(url, function(response) {
+      _this.apiResponse = response;
 
-      var searchResult = _this.store.createRecord('search-result');
+      _this.searchResult = _this.store.createRecord('search-result');
+      _this.searchResult.set('searchTerm', term);
+      _this.searchResult.set('filters', response.filters);
 
-      searchResult.set('searchTerm', term);
-      searchResult.set('filters', res.filters);
+      _this.controllerFor('index').set('model', _this.searchResult);
 
-      _this.controllerFor('index').set('model', searchResult);
+      if (options.images) _this.renderResourceType('images', response.images);
+      if (options.videos) _this.renderResourceType('videos', response.videos);
+      if (options.audios) _this.renderResourceType('audios', response.audios);
+      if (options.documents) _this.renderResourceType('documents', response.articles);
+    });
+  },
+  renderResourceType: function (resourceType, model) {
+    var controller = this.controllerFor(resourceType);
+    controller.set('model', model);
 
-      if (options.images) {
-        searchResult.set('images', res.images);
-        _this.controllerFor('images').set('model', searchResult.images);
-        _this.render('images', {
-          into: 'index',
-          outlet: 'images'
-        });
-      }
-      if (options.videos) {
-        searchResult.set('videos', res.videos);
-        _this.controllerFor('videos').set('model', searchResult.videos);
-        _this.render('videos', {
-          into: 'index',
-          outlet: 'videos'
-        });
-      }
-      if (options.audios) {
-        searchResult.set('audios', res.audios);
-        _this.controllerFor('audios').set('model', searchResult.audios);
-        _this.render('audios', {
-          into: 'index',
-          outlet: 'audios'
-        });
-      }
-      if (options.documents) {
-        searchResult.set('documents', res.articles);
-        _this.controllerFor('documents').set('model', searchResult.documents);
-        _this.render('documents', {
-          into: 'index',
-          outlet: 'documents'
-        });
-      }
+    // Paging
+    var current_page = parseInt(controller.get('current_page'));
+    var total_items = parseInt(controller.get('total_items'));
+    var items_per_page = parseInt(controller.get('items_per_page'));
+    var hasPreviousPage = current_page > 1;
+    var hasNextPage = current_page < (Math.ceil(total_items / items_per_page));
+
+    controller.set('hasPreviousPage', hasPreviousPage);
+    controller.set('hasNextPage', hasNextPage);
+
+    this.render(resourceType, {
+      into: 'index',
+      outlet: resourceType
     });
   },
   getPageIndex: function (controller, skipTo) {

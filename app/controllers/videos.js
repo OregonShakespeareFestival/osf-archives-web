@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import PagingController from 'osf-archives-web/controllers/paging-controller';
 
-export default Ember.Controller.extend({
+export default PagingController.extend({
 });

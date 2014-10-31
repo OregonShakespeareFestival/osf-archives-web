@@ -6,7 +6,9 @@ section.documents
         img src="http://localhost:3000#{thumb_url}" alt=title
         = title
   .paging
-    a{action 'prev_documents'} href="#"
-      | PREV
-    a{action 'next_documents'} href="#"
-      | NEXT
+    if hasPreviousPage
+      a{action 'prev_documents'} href="#"
+        | PREV
+    if hasNextPage
+      a{action 'next_documents'} href="#"
+        | NEXT

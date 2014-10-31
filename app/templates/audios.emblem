@@ -6,7 +6,9 @@ section.audios
       audio controls="controls"
         source src="http://localhost:3000#{url}"
   .paging
-    a{action 'prev_audios'} href="#"
-      | PREV
-    a{action 'next_audios'} href="#"
-      | NEXT
+    if hasPreviousPage
+      a{action 'prev_audios'} href="#"
+        | PREV
+    if hasNextPage
+      a{action 'next_audios'} href="#"
+        | NEXT
