@@ -13,7 +13,13 @@ export default Ember.Route.extend({
     var _this = this;
     var term = $('.js-search').val();
 
-    var queryString = ['q=' + term];
+    var resourceTypes = [];
+    if (options.images) resourceTypes.push('images');
+    if (options.videos) resourceTypes.push('videos');
+    if (options.audios) resourceTypes.push('audios');
+    if (options.documents) resourceTypes.push('articles');
+
+    var queryString = ['q=' + term, 't=' + resourceTypes.join(',')];
     queryString.push('images_per_page=8');
     queryString.push('videos_per_page=8');
     queryString.push('audios_per_page=8');
@@ -31,36 +37,41 @@ export default Ember.Route.extend({
 
       searchResult.set('searchTerm', term);
       searchResult.set('filters', res.filters);
-      searchResult.set('images', res.images);
-      searchResult.set('videos', res.videos);
-      searchResult.set('audios', res.audios);
-      searchResult.set('documents', res.articles);
 
       _this.controllerFor('index').set('model', searchResult);
-      _this.controllerFor('images').set('model', searchResult.images);
-      _this.controllerFor('videos').set('model', searchResult.videos);
-      _this.controllerFor('audios').set('model', searchResult.audios);
-      _this.controllerFor('documents').set('model', searchResult.documents);
-    });
 
-    this.render('images', {
-      into: 'index',
-      outlet: 'images'
-    });
-
-    this.render('videos', {
-      into: 'index',
-      outlet: 'videos'
-    });
-
-    this.render('audios', {
-      into: 'index',
-      outlet: 'audios'
-    });
-
-    this.render('documents', {
-      into: 'index',
-      outlet: 'documents'
+      if (options.images) {
+        searchResult.set('images', res.images);
+        _this.controllerFor('images').set('model', searchResult.images);
+        _this.render('images', {
+          into: 'index',
+          outlet: 'images'
+        });
+      }
+      if (options.videos) {
+        searchResult.set('videos', res.videos);
+        _this.controllerFor('videos').set('model', searchResult.videos);
+        _this.render('videos', {
+          into: 'index',
+          outlet: 'videos'
+        });
+      }
+      if (options.audios) {
+        searchResult.set('audios', res.audios);
+        _this.controllerFor('audios').set('model', searchResult.audios);
+        _this.render('audios', {
+          into: 'index',
+          outlet: 'audios'
+        });
+      }
+      if (options.documents) {
+        searchResult.set('documents', res.articles);
+        _this.controllerFor('documents').set('model', searchResult.documents);
+        _this.render('documents', {
+          into: 'index',
+          outlet: 'documents'
+        });
+      }
     });
   },
   getPageIndex: function (controller, skipTo) {
@@ -68,31 +79,36 @@ export default Ember.Route.extend({
   },
   actions: {
     search: function () {
-      this.getData();
+      this.getData({
+        'images': true,
+        'videos': true,
+        'audios': true,
+        'documents': true
+      });
     },
     next: function () {
-      this.getData({ 'images_page': this.getPageIndex('images', +1) });
+      this.getData({ 'images': true, 'images_page': this.getPageIndex('images', +1) });
     },
     prev: function () {
-      this.getData({ 'images_page': this.getPageIndex('images', -1) });
+      this.getData({ 'images': true, 'images_page': this.getPageIndex('images', -1) });
     },
     next_videos: function () {
-      this.getData({ 'videos_page': this.getPageIndex('videos', +1) });
+      this.getData({ 'videos': true, 'videos_page': this.getPageIndex('videos', +1) });
     },
     prev_videos: function () {
-      this.getData({ 'videos_page': this.getPageIndex('videos', -1) });
+      this.getData({ 'videos': true, 'videos_page': this.getPageIndex('videos', -1) });
     },
     next_audios: function () {
-      this.getData({ 'audios_page': this.getPageIndex('audios', +1) });
+      this.getData({ 'audios': true, 'audios_page': this.getPageIndex('audios', +1) });
     },
     prev_audios: function () {
-      this.getData({ 'audios_page': this.getPageIndex('audios', -1) });
+      this.getData({ 'audios': true, 'audios_page': this.getPageIndex('audios', -1) });
     },
     next_documents: function () {
-      this.getData({ 'documents_page': this.getPageIndex('documents', +1) });
+      this.getData({ 'documents': true, 'documents_page': this.getPageIndex('documents', +1) });
     },
     prev_documents: function () {
-      this.getData({ 'documents_page': this.getPageIndex('documents', -1) });
+      this.getData({ 'documents': true, 'documents_page': this.getPageIndex('documents', -1) });
     }
   }
 
