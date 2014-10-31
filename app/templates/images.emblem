@@ -14,9 +14,9 @@ section.images
                     =title
     .paging
       a{action 'prev'} href="#"
-        | PREV IMAGES
+        | PREV
       a{action 'next'} href="#"
-        | NEXT IMAGES
+        | NEXT
     section.slideshow
       ul
         = group

@@ -6,3 +6,8 @@ section.videos
         li
           a href="#" data-webm="http://localhost:3000#{webm_url}" data-mp4="http://localhost:3000#{mp4}" data-title=title data-description=description
             img src=thumbnail_url alt=title
+  .paging
+    a{action 'prev_videos'} href="#"
+      | PREV
+    a{action 'next_videos'} href="#"
+      | NEXT

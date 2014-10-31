@@ -14,8 +14,15 @@ export default Ember.Route.extend({
     var term = $('.js-search').val();
 
     var queryString = ['q=' + term];
-    if (options.images_page)
-      queryString.push('images_page=' + options.images_page);
+    queryString.push('images_per_page=8');
+    queryString.push('videos_per_page=8');
+    queryString.push('audios_per_page=8');
+    queryString.push('articles_per_page=8');
+    if (options.images_page) queryString.push('images_page=' + options.images_page);
+    if (options.videos_page) queryString.push('videos_page=' + options.videos_page);
+    if (options.audios_page) queryString.push('audios_page=' + options.audios_page);
+    if (options.documents_page) queryString.push('articles_page=' + options.documents_page);
+
     var url = 'http://localhost:3000/search_results.json?' + queryString.join('&');
 
     Ember.$.getJSON(url, function(res) {
@@ -68,6 +75,24 @@ export default Ember.Route.extend({
     },
     prev: function () {
       this.getData({ 'images_page': this.getPageIndex('images', -1) });
+    },
+    next_videos: function () {
+      this.getData({ 'videos_page': this.getPageIndex('videos', +1) });
+    },
+    prev_videos: function () {
+      this.getData({ 'videos_page': this.getPageIndex('videos', -1) });
+    },
+    next_audios: function () {
+      this.getData({ 'audios_page': this.getPageIndex('audios', +1) });
+    },
+    prev_audios: function () {
+      this.getData({ 'audios_page': this.getPageIndex('audios', -1) });
+    },
+    next_documents: function () {
+      this.getData({ 'documents_page': this.getPageIndex('documents', +1) });
+    },
+    prev_documents: function () {
+      this.getData({ 'documents_page': this.getPageIndex('documents', -1) });
     }
   }
 
