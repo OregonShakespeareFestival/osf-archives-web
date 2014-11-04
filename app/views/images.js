@@ -6,7 +6,7 @@ export default Ember.View.extend({
     var model = this.get('controller.model');
     if (model) {
       for (var i=0; i<model.data.length; i++) {
-        (new Image).src = 'http://localhost:3000' + model.data[i].url;
+        (new Image()).src = 'http://localhost:3000' + model.data[i].url;
       }
 
       Ember.run.scheduleOnce('afterRender', function () {
