@@ -1,0 +1,16 @@
+# .pairs - configuration for 'git pair'
+pairs:
+  # <initials>: <Firstname> <Lastname>[; <email-id>]
+  sc: Sean Culver; sean
+  ac: Adam Cuppy; adam
+  ty: Trever Yarrish; trever
+  rh: Robert Head; rob
+  jh: Jesse House; jesse
+  lb: Luke Barbuto; luke
+  jf: Joel Ferrier; joel; joelf@osfashland.org
+  jp: Jeff Parr; jeff
+  mjs: Matti Salokangas; matti
+email:
+  prefix: team
+  domain: codingzeal.com
+  no_solo_prefix: true
