@@ -5,9 +5,10 @@ export default Ember.View.extend({
     // Preload images
     var model = this.get('controller.model');
     if (model) {
-      for (var i=0; i<model.data.length; i++) {
-        (new Image()).src = 'http://localhost:3000' + model.data[i].url;
-      }
+      // TODO: Preload Refactor
+      // for (var i=0; i<model.data.length; i++) {
+      //   (new Image()).src = 'http://localhost:3000' + model.data[i].url;
+      // }
 
       Ember.run.scheduleOnce('afterRender', function () {
         Ember.run.later(function() {

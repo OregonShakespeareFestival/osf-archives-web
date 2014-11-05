@@ -14,10 +14,10 @@ section.images
                     =title
     .paging
       if hasPreviousPage
-        a{action 'prev'} href="#"
+        a{action 'page' 'images' -1} href="#"
           | PREV
       if hasNextPage
-        a{action 'next'} href="#"
+        a{action 'page' 'images' 1} href="#"
           | NEXT
     section.slideshow
       ul

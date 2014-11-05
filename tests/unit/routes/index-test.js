@@ -14,13 +14,15 @@ test('it exists', function() {
 });
 
 test('it gets data', function () {
-  expect(1);
+  expect(3);
 
   var route = this.subject();
 
   return route.getData()
               .then(function(response) {
                 ok(response);
+                ok(response.query);
+                ok(response.filters);
               });
 });
 
@@ -43,12 +45,7 @@ test('it only gets images', function () {
 
   var route = this.subject();
 
-  return route.getData({
-                'images': true,
-                'videos': false,
-                'audios': false,
-                'documents': false
-              })
+  return route.getData({ type: 'images' })
         .then(function(response) {
           ok(response.images);
           ok(!response.videos);
@@ -62,12 +59,7 @@ test('it only gets videos', function () {
 
   var route = this.subject();
 
-  return route.getData({
-                'images': false,
-                'videos': true,
-                'audios': false,
-                'documents': false
-              })
+  return route.getData({ type: 'videos' })
         .then(function(response) {
           ok(!response.images);
           ok(response.videos);
@@ -81,12 +73,7 @@ test('it only gets audios', function () {
 
   var route = this.subject();
 
-  return route.getData({
-                'images': false,
-                'videos': false,
-                'audios': true,
-                'documents': false
-              })
+  return route.getData({ type: 'audios' })
         .then(function(response) {
           ok(!response.images);
           ok(!response.videos);
@@ -100,12 +87,7 @@ test('it only gets documents', function () {
 
   var route = this.subject();
 
-  return route.getData({
-                'images': false,
-                'videos': false,
-                'audios': false,
-                'documents': true
-              })
+  return route.getData({ type: 'articles' })
         .then(function(response) {
           ok(!response.images);
           ok(!response.videos);
