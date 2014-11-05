@@ -3,6 +3,9 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   buildSearchQuery: function(options) {
     options = options || {};
+
+    if (!options.type) { throw new Error('Type is required.'); }
+
     var term = options.term ? options.term : $('.js-search').val();
     var queryString = [];
     var defaultPerPage = 8;
@@ -31,11 +34,6 @@ export default Ember.Route.extend({
 
     controller.set('hasPreviousPage', hasPreviousPage);
     controller.set('hasNextPage', hasNextPage);
-
-    this.render(response.type, {
-      into: 'index',
-      outlet: response.type
-    });
   },
 
   getData: function (options) {
@@ -56,6 +54,7 @@ export default Ember.Route.extend({
       types.forEach( function(type) {
         self.getData({ type: type }).then(function(response) {
           self.bindData(response);
+          self.render(type, { into: 'index', outlet: type });
         });
       });
     },
@@ -64,6 +63,7 @@ export default Ember.Route.extend({
       var self = this;
       self.getData({ type: type, page: this.getPageIndex(type, skipTo) }).then(function(response) {
         self.bindData(response);
+        self.render(type, { into: 'index', outlet: type });
       });
     }
   }

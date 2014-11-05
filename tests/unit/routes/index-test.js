@@ -5,7 +5,11 @@ import {
 
 moduleFor('route:index', 'IndexRoute', {
   // Specify the other units that are required for this test.
-  needs: ['controller:index']
+  needs: [
+    'controller:index',
+    'controller:images',
+    'template:images'
+  ]
 });
 
 test('it exists', function() {
@@ -13,12 +17,22 @@ test('it exists', function() {
   ok(route);
 });
 
+test('it requires type', function () {
+  expect(1);
+
+  var route = this.subject();
+
+  throws(function () {
+    route.buildSearchQuery();
+  }, 'Type is required.');
+});
+
 test('it gets data', function () {
   expect(3);
 
   var route = this.subject();
 
-  return route.getData()
+  return route.getData({ type: 'images' })
               .then(function(response) {
                 ok(response);
                 ok(response.query);
@@ -33,6 +47,7 @@ test('it searches with a keyword', function () {
   var searchTerm = 'test';
 
   return route.getData({
+                'type': 'images',
                 'term': searchTerm
               })
               .then(function(response) {
@@ -86,4 +101,24 @@ test('it only gets documents', function () {
           ok(response.data);
           equal(response.type, 'articles');
         });
+});
+
+test('it builds a search url', function () {
+  expect(1);
+
+  var route = this.subject();
+
+  ok(route.buildSearchQuery({ type: 'images' }));
+});
+
+test('it gets page index', function () {
+  expect(1);
+
+  var route = this.subject();
+
+  return route.getData({ type: 'images' }).then(function(response) {
+    route.bindData(response);
+    equal(route.getPageIndex('images', 1), 2);
+  });
+
 });
