@@ -198,8 +198,7 @@ var VideoGrid = (function() {
 
       // if already expanded remove class "video-grid-expanded" from current item and add it to new item
       if( current !== -1 ) {
-        var $currentItem = $items.eq( current );
-        $currentItem.removeClass( 'video-grid-expanded' );
+        $('.video-grid-expanded').removeClass('video-grid-expanded');
         this.$item.addClass( 'video-grid-expanded' );
         // position the preview correctly
         this.positionPreview();
@@ -208,7 +207,7 @@ var VideoGrid = (function() {
       // TODO: Figure out how to not render the metamore script tags from Ember in the .videos-grid
       //        The extra <script> tags are causing the index to be 1 off.
       // update current value
-      current = this.$item.index();
+      current = this.$item.index('li');
 
       // update preview´s content
       var $itemEl = this.$item.children( 'a' ),
@@ -280,7 +279,8 @@ var VideoGrid = (function() {
         // }
         this.$previewEl.css( 'height', 0 );
         // the current expanded item (might be different from this.$item)
-        var $expandedItem = $items.eq( this.expandedIdx );
+        // TODO: Remove expandedIdx usage.
+        var $expandedItem = $('.video-grid-expanded');//$items.eq( this.expandedIdx );
         $expandedItem.css( 'height', $expandedItem.data( 'height' ) ).on( transEndEventName, onEndFn );
 
         if( !support ) {
