@@ -7,8 +7,8 @@ section.audios
         source src="http://localhost:3000#{url}"
   .paging
     if hasPreviousPage
-      a{action 'prev_audios'} href="#"
+      a{action 'page' 'audios' -1} href="#"
         | PREV
     if hasNextPage
-      a{action 'next_audios'} href="#"
+      a{action 'page' 'audios' 1} href="#"
         | NEXT

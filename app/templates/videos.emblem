@@ -8,8 +8,8 @@ section.videos
             img src=thumbnail_url alt=title
   .paging
     if hasPreviousPage
-      a{action 'prev_videos'} href="#"
+      a{action 'page' 'videos' -1} href="#"
         | PREV
     if hasNextPage
-      a{action 'next_videos'} href="#"
+      a{action 'page' 'videos' 1} href="#"
         | NEXT

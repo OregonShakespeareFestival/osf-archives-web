@@ -1,7 +1,7 @@
 header
   h1 Welcome to the Archive
   .search-the-archive
-    =input class="js-search" placeholder="Enter search terms" value=model.searchTerm autofocus=true
+    =input class="js-search" placeholder="Enter search terms" autofocus=true
     button{action 'search'} class="btn-primary" type="button"
       | Search
 .main-content-region

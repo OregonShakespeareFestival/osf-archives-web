@@ -1,17 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  searchResult: null,
-  apiResponse: null,
-
-  getSearchResult: function (options) {
-    var self = this;
-    this.getData(options).then(function(response) {
-      self.renderResponse(response, self);
-    });
-  },
-
-  getData: function (options) {
+  buildSearchQuery: function(options) {
     options = options || {};
     var term = options.term ? options.term : $('.js-search').val();
     var queryString = [];
@@ -23,30 +13,14 @@ export default Ember.Route.extend({
     queryString.push('q=' + term);
     queryString.push('t=' + options.type);
 
-    var url = 'http://localhost:3000/search_results.json?' + queryString.join('&');
-
-    return Ember.$.getJSON(url, function(response) {
-      return response;
-    });
+    return 'http://localhost:3000/search_results.json?' + queryString.join('&');
   },
 
-  renderResponse: function (response, self) {
-    self.apiResponse = response;
-    self.searchResult = self.store.createRecord('search-result');
-    self.searchResult.set('searchTerm', response.query);
-    self.searchResult.set('filters', response.filters);
-
-    self.controllerFor('index').set('model', self.searchResult);
-
-    if (response.images) { self.renderResourceType('images', response.images); }
-    if (response.videos) { self.renderResourceType('videos', response.videos); }
-    if (response.audios) { self.renderResourceType('audios', response.audios); }
-    if (response.documents) { self.renderResourceType('documents', response.articles); }
-  },
-
-  renderResourceType: function (resourceType, model) {
-    var controller = this.controllerFor(resourceType);
-    controller.set('model', model);
+  bindData: function (response) {
+    // Set the resource type controller's model and render into outlet.
+    // Given that response.type == 'images'
+    var controller = this.controllerFor(response.type);
+    controller.set('model', response.data);
 
     // Paging
     var current_page = parseInt(controller.get('current_page'));
@@ -58,9 +32,15 @@ export default Ember.Route.extend({
     controller.set('hasPreviousPage', hasPreviousPage);
     controller.set('hasNextPage', hasNextPage);
 
-    this.render(resourceType, {
+    this.render(response.type, {
       into: 'index',
-      outlet: resourceType
+      outlet: response.type
+    });
+  },
+
+  getData: function (options) {
+    return Ember.$.getJSON(this.buildSearchQuery(options), function(response) {
+      return response;
     });
   },
 
@@ -74,16 +54,17 @@ export default Ember.Route.extend({
       var types = ['images', 'videos', 'audios', 'articles'];
 
       types.forEach( function(type) {
-        self.getData({
-          type: type
-        }).then(function(response) {
-          self.renderResponse(response, self);
+        self.getData({ type: type }).then(function(response) {
+          self.bindData(response);
         });
       });
     },
 
     page: function (type, skipTo) {
-      this.getSearchResult({ type: type, page: this.getPageIndex(type, skipTo) });
+      var self = this;
+      self.getData({ type: type, page: this.getPageIndex(type, skipTo) }).then(function(response) {
+        self.bindData(response);
+      });
     }
   }
 

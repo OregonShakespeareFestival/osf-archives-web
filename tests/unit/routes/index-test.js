@@ -41,57 +41,49 @@ test('it searches with a keyword', function () {
 });
 
 test('it only gets images', function () {
-  expect(4);
+  expect(2);
 
   var route = this.subject();
 
   return route.getData({ type: 'images' })
         .then(function(response) {
-          ok(response.images);
-          ok(!response.videos);
-          ok(!response.audios);
-          ok(!response.articles);
+          ok(response.data);
+          equal(response.type, 'images');
         });
 });
 
 test('it only gets videos', function () {
-  expect(4);
+  expect(2);
 
   var route = this.subject();
 
   return route.getData({ type: 'videos' })
         .then(function(response) {
-          ok(!response.images);
-          ok(response.videos);
-          ok(!response.audios);
-          ok(!response.articles);
+          ok(response.data);
+          equal(response.type, 'videos');
         });
 });
 
 test('it only gets audios', function () {
-  expect(4);
+  expect(2);
 
   var route = this.subject();
 
   return route.getData({ type: 'audios' })
         .then(function(response) {
-          ok(!response.images);
-          ok(!response.videos);
-          ok(response.audios);
-          ok(!response.articles);
+          ok(response.data);
+          equal(response.type, 'audios');
         });
 });
 
 test('it only gets documents', function () {
-  expect(4);
+  expect(2);
 
   var route = this.subject();
 
   return route.getData({ type: 'articles' })
         .then(function(response) {
-          ok(!response.images);
-          ok(!response.videos);
-          ok(!response.audios);
-          ok(response.articles);
+          ok(response.data);
+          equal(response.type, 'articles');
         });
 });

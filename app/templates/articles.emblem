@@ -1,4 +1,4 @@
-section.documents
+section.articles
   h1 Documents
   = group
     = each model.data
@@ -7,8 +7,8 @@ section.documents
         = title
   .paging
     if hasPreviousPage
-      a{action 'prev_documents'} href="#"
+      a{action 'page' 'articles' -1} href="#"
         | PREV
     if hasNextPage
-      a{action 'next_documents'} href="#"
+      a{action 'page' 'articles' 1} href="#"
         | NEXT
