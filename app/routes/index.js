@@ -5,41 +5,46 @@ export default Ember.Route.extend({
   apiResponse: null,
   getData: function (options) {
     options = options || {};
-    var _this = this;
-    var term = $('.js-search').val();
-
+    var term = options.term ? options.term : $('.js-search').val();
+    var queryString = [];
     var resourceTypes = [];
+
     if (options.images) { resourceTypes.push('images'); }
     if (options.videos) { resourceTypes.push('videos'); }
     if (options.audios) { resourceTypes.push('audios'); }
     if (options.documents) { resourceTypes.push('articles'); }
 
-    var queryString = ['q=' + term, 't=' + resourceTypes.join(',')];
-    queryString.push('images_per_page=8');
-    queryString.push('videos_per_page=8');
-    queryString.push('audios_per_page=8');
-    queryString.push('articles_per_page=8');
+    if (options.images_per_page || 8) { queryString.push('images_per_page=' + options.images_per_page || 8); }
+    if (options.videos_per_page || 8) { queryString.push('videos_per_page=' + options.videos_per_page || 8); }
+    if (options.audios_per_page || 8) { queryString.push('audios_per_page=' + options.audios_per_page || 8); }
+    if (options.articles_per_page || 8) { queryString.push('articles_per_page=' + options.articles_per_page || 8); }
+
     if (options.images_page) { queryString.push('images_page=' + options.images_page); }
     if (options.videos_page) { queryString.push('videos_page=' + options.videos_page); }
     if (options.audios_page) { queryString.push('audios_page=' + options.audios_page); }
     if (options.documents_page) { queryString.push('articles_page=' + options.documents_page); }
 
+    queryString.push('q=' + term);
+    queryString.push('t=' + resourceTypes.join(','));
+
     var url = 'http://localhost:3000/search_results.json?' + queryString.join('&');
 
-    Ember.$.getJSON(url, function(response) {
-      _this.apiResponse = response;
-
-      _this.searchResult = _this.store.createRecord('search-result');
-      _this.searchResult.set('searchTerm', term);
-      _this.searchResult.set('filters', response.filters);
-
-      _this.controllerFor('index').set('model', _this.searchResult);
-
-      if (options.images) { _this.renderResourceType('images', response.images); }
-      if (options.videos) { _this.renderResourceType('videos', response.videos); }
-      if (options.audios) { _this.renderResourceType('audios', response.audios); }
-      if (options.documents) { _this.renderResourceType('documents', response.articles); }
+    return Ember.$.getJSON(url, function(response) {
+      return response;
     });
+  },
+  renderResponse: function (response, self) {
+    self.apiResponse = response;
+    self.searchResult = self.store.createRecord('search-result');
+    self.searchResult.set('searchTerm', term);
+    self.searchResult.set('filters', response.filters);
+
+    self.controllerFor('index').set('model', self.searchResult);
+
+    if (response.images) { self.renderResourceType('images', response.images); }
+    if (response.videos) { self.renderResourceType('videos', response.videos); }
+    if (response.audios) { self.renderResourceType('audios', response.audios); }
+    if (response.documents) { self.renderResourceType('documents', response.articles); }
   },
   renderResourceType: function (resourceType, model) {
     var controller = this.controllerFor(resourceType);
@@ -65,36 +70,72 @@ export default Ember.Route.extend({
   },
   actions: {
     search: function () {
+      var self = this;
+
       this.getData({
         'images': true,
         'videos': true,
         'audios': true,
         'documents': true
+      }).then(function(response) {
+        self.renderResponse(response, self);
       });
     },
     next: function () {
-      this.getData({ 'images': true, 'images_page': this.getPageIndex('images', +1) });
+      var self = this;
+      this.getData({ 'images': true, 'images_page': this.getPageIndex('images', +1) })
+          .then(function(response) {
+            self.renderResponse(response, self);
+          });
     },
     prev: function () {
-      this.getData({ 'images': true, 'images_page': this.getPageIndex('images', -1) });
+      var self = this;
+      this.getData({ 'images': true, 'images_page': this.getPageIndex('images', -1) })
+          .then(function(response) {
+            self.renderResponse(response, self);
+          });
     },
     next_videos: function () {
-      this.getData({ 'videos': true, 'videos_page': this.getPageIndex('videos', +1) });
+      var self = this;
+      this.getData({ 'videos': true, 'videos_page': this.getPageIndex('videos', +1) })
+          .then(function(response) {
+            self.renderResponse(response, self);
+          });
     },
     prev_videos: function () {
-      this.getData({ 'videos': true, 'videos_page': this.getPageIndex('videos', -1) });
+      var self = this;
+      this.getData({ 'videos': true, 'videos_page': this.getPageIndex('videos', -1) })
+          .then(function(response) {
+            self.renderResponse(response, self);
+          });
     },
     next_audios: function () {
-      this.getData({ 'audios': true, 'audios_page': this.getPageIndex('audios', +1) });
+      var self = this;
+      this.getData({ 'audios': true, 'audios_page': this.getPageIndex('audios', +1) })
+          .then(function(response) {
+            self.renderResponse(response, self);
+          });
     },
     prev_audios: function () {
-      this.getData({ 'audios': true, 'audios_page': this.getPageIndex('audios', -1) });
+      var self = this;
+      this.getData({ 'audios': true, 'audios_page': this.getPageIndex('audios', -1) })
+          .then(function(response) {
+            self.renderResponse(response, self);
+          });
     },
     next_documents: function () {
-      this.getData({ 'documents': true, 'documents_page': this.getPageIndex('documents', +1) });
+      var self = this;
+      this.getData({ 'documents': true, 'documents_page': this.getPageIndex('documents', +1) })
+          .then(function(response) {
+            self.renderResponse(response, self);
+          });
     },
     prev_documents: function () {
-      this.getData({ 'documents': true, 'documents_page': this.getPageIndex('documents', -1) });
+      var self = this;
+      this.getData({ 'documents': true, 'documents_page': this.getPageIndex('documents', -1) })
+          .then(function(response) {
+            self.renderResponse(response, self);
+          });
     }
   }
 
