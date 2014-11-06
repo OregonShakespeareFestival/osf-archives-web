@@ -49,7 +49,10 @@ export default Ember.Route.extend({
   actions: {
     search: function () {
       var self = this;
-      var types = ['images', 'videos', 'audios', 'articles'];
+      var types = [];
+      $.each($('.js-filters .active'), function (){
+        types.push($(this).attr('data-type'));
+      });
 
       types.forEach( function(type) {
         self.getData({ type: type }).then(function(response) {
@@ -65,6 +68,28 @@ export default Ember.Route.extend({
         self.bindData(response);
         self.render(type, { into: 'index', outlet: type });
       });
+    },
+
+    filter: function (type) {
+      var self = this;
+      var $filter = $('.js-filters [data-type=' + type + ']');
+      $filter.toggleClass('active');
+
+      // after a search just show hide container
+      // TODO: Refactor this
+      if ($filter.hasClass('active')) {
+        if ($('section.' + type).length > 0) {
+          $('section.' + type).show();
+        }
+        else {
+          self.getData({ type: type }).then(function(response) {
+            self.bindData(response);
+            self.render(type, { into: 'index', outlet: type });
+          });
+        }
+      } else {
+        $('section.' + type).hide();
+      }
     }
   }
 

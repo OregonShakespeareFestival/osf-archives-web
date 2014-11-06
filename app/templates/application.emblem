@@ -4,6 +4,20 @@ header
     =input class="js-search" placeholder="Enter search terms" autofocus=true action="search" insert-newline="search"
     button{action 'search'} class="btn-primary" type="button"
       | Search
+.search-filters
+  ul.js-filters
+    li
+      a{action 'filter' 'images'} class='active' data-type='images'
+        | Images
+    li
+      a{action 'filter' 'videos'} class='active' data-type='videos'
+        | Videos
+    li
+      a{action 'filter' 'audios'} class='active' data-type='audios'
+        | Audios
+    li
+      a{action 'filter' 'articles'} class='active' data-type='articles'
+        | Documents
 .main-content-region
   =outlet
 footer
