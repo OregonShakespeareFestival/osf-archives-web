@@ -2,8 +2,8 @@ section.articles
   h1 Documents
   = group
     = each model.data
-      a target="_blank" href="http://localhost:3000#{url}"
-        img src="http://localhost:3000#{thumb_url}" alt=title
+      a target="_blank" href="#{OsfArchivesWeb.API_HOST}#{url}"
+        img src="#{OsfArchivesWeb.API_HOST}#{thumb_url}" alt=title
         = title
   .paging
     if hasPreviousPage

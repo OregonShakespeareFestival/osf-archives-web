@@ -2,9 +2,9 @@ section.audios
   h1 Audio
   = group
     = each model.data
-      img src="http://localhost:3000#{thumb_url}"
+      img src="#{OsfArchivesWeb.API_HOST}#{thumb_url}"
       audio controls="controls"
-        source src="http://localhost:3000#{url}"
+        source src="#{OsfArchivesWeb.API_HOST}#{url}"
   .paging
     if hasPreviousPage
       a{action 'page' 'audios' -1} href="#"

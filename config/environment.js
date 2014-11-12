@@ -16,6 +16,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      API_HOST: 'http://localhost:3000'
     },
 
     contentSecurityPolicy: {
@@ -36,7 +37,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.SUFIA_HOSTNAME = 'http://localhost:3000';
+    ENV.APP.API_HOST = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
@@ -50,11 +51,11 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
 
-    ENV.SUFIA_HOSTNAME = 'http://localhost:3000';
+    ENV.APP.API_HOST = 'http://localhost:3000';
   }
 
   if (environment === 'production') {
-    ENV.SUFIA_HOSTNAME = 'http://hydra.osfashland.org';
+    ENV.APP.API_HOST = 'http://hydra.osfashland.org';
   }
 
   return ENV;

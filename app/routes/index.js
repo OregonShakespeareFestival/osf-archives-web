@@ -16,7 +16,7 @@ export default Ember.Route.extend({
     queryString.push('q=' + term);
     queryString.push('t=' + options.type);
 
-    return 'http://localhost:3000/search_results.json?' + queryString.join('&');
+    return OsfArchivesWeb.API_HOST + '/search_results.json?' + queryString.join('&');
   },
 
   bindData: function (response) {

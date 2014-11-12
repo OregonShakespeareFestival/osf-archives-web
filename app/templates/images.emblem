@@ -8,7 +8,7 @@ section.images
           = each model.data
             li
               figure
-                img src="http://localhost:3000#{thumbnail_url}" alt=title
+                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
                 figcaption
                   h3
                     =title
@@ -28,7 +28,7 @@ section.images
                 figcaption
                   h3
                     =title
-                img src="http://localhost:3000#{url}" alt=title
+                img src="#{OsfArchivesWeb.API_HOST}#{url}" alt=title
       nav
         span.icon.nav-prev
         span.icon.nav-next
