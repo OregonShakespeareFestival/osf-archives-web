@@ -16,7 +16,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      API_HOST: 'http://localhost:3000'
+      API_HOST: 'http://localhost:3000/test'
     },
 
     contentSecurityPolicy: {
@@ -52,6 +52,10 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
 
     ENV.APP.API_HOST = 'http://localhost:3000';
+  }
+
+  if (environment === 'staging') {
+    ENV.APP.API_HOST = 'http://hydra.osfashland.org';
   }
 
   if (environment === 'production') {
