@@ -41,7 +41,14 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+* Connect to the staging server `ssh -i hydra.pem ec2-user@hydra.osfashland.org`
+* `cd osf-archives-web`
+* `git pull`
+* `ember build --environment staging`
+
+If you are not seeing your changes restart nginx with `sudo systemctl restart nginx`
+
+Connect to the ember app at hydra.osfashland.org:8000
 
 ## Further Reading / Useful Links
 
