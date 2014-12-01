@@ -1,0 +1,30 @@
+.search-filters {
+  & .row:first-of-type {
+    border-bottom: 1px solid $neutral-light;
+  }
+}
+
+.search-filter {
+  position: relative;
+  padding-left: 100px; 
+  height: 5vh;
+  vertical-align: center;
+}
+
+.filter-title {
+  color: $neutral-dark-mid;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  left: 0;
+  width: 100px;
+}
+
+.filter-types {
+  list-style-type: none;
+}
+
+.filter-type-item {
+  float: left;
+  margin-right: 15px;
+}

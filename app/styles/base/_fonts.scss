@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Rosario:400,700,400italic,700italic);
 @import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700);
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900);
 
 @font-face {
   font-family: 'bpicons';
@@ -24,5 +25,5 @@
   font-style: normal;
 } /* Made with http://icomoon.io/app */
 
-$primaryHeaderFont: 'Rosario', sans-serif;
-$primaryCopyFont: 'PT Serif', serif;
+$primaryHeaderFont: 'Source Sans Pro', sans-serif;
+$primaryCopyFont: 'Lato', serif;

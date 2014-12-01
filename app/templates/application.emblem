@@ -1,23 +1,55 @@
-header
-  h1 Welcome to the Archive
+header.header-primary style="background-image: url('../images/header-bg-richard.jpg');"
+  .header-logo
+    img src="images/osf-logo.png" alt="Oregon Shakespeare Festival"/
+  nav.nav-primary
+    a.nav-primary__link href="#"
+      | Connect With Us
+    a.nav-primary__link href="#"
+      | Plan Your Visit
+    a.nav-primary__link href="#"
+      | Give and Join
+    a.nav-primary__link.btn-primary href="#"
+      | Buy Tickets
+
+  h1.page-title Welcome to the Archive
   .search-the-archive
-    =input class="js-search" placeholder="Enter search terms" autofocus=true action="search" insert-newline="search"
+    =input class="js-search" placeholder="What are you looking for?" autofocus=true action="search" insert-newline="search"
     button{action 'search'} class="btn-primary" type="button"
       | Search
 .search-filters
-  ul.js-filters
-    li
-      a{action 'filter' 'images'} class='active' data-type='images'
-        | Images
-    li
-      a{action 'filter' 'videos'} class='active' data-type='videos'
-        | Videos
-    li
-      a{action 'filter' 'audios'} class='active' data-type='audios'
-        | Audios
-    li
-      a{action 'filter' 'articles'} class='active' data-type='articles'
-        | Documents
+  .row
+    .page-container
+      .col-1-2
+        .search-filter.filter-works
+          h3.filter-title Work
+          select
+            option All Works
+      .col-1-2
+        .search-filter.filter-venues
+          h3.filter-title Venue
+
+  .row
+    .page-container
+      .col-1-2
+        .search-filter.filter-types
+          h3.filter-title File Type
+          ul.js-filters
+            li.filter-type-item
+              a{action 'filter' 'images'} class='active' data-type='images'
+                | Images
+            li.filter-type-item
+              a{action 'filter' 'videos'} class='active' data-type='videos'
+                | Videos
+            li.filter-type-item
+              a{action 'filter' 'audios'} class='active' data-type='audios'
+                | Audios
+            li.filter-type-item
+              a{action 'filter' 'articles'} class='active' data-type='articles'
+                | Documents
+      .col-1-2
+        .search-filter.filter-year
+          h3.filter-title Year Range
+  
 .main-content-region
   =outlet
 footer

@@ -1,0 +1,32 @@
+%grid-container,
+.grid-container,
+.page-container {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/*-- our cleafix hack -- */ 
+.row:before, 
+.row:after,
+.grid-block {
+  content:"";
+  display: table ;
+  clear:both;
+}
+
+[class*='col-'] {
+  float: left;
+  min-height: 1px;
+  width: 16.66%;
+  padding: 12px;
+}
+
+.col-1-6 { width: 16.66%; }
+.col-2-6 { width: 33.33%; }
+.col-3-6,
+.col-1-2 { width: 50%;    }
+.col-4-6 { width: 66.66%; }
+.col-5-6 { width: 83.33%; }
+.col-6-6 { width: 100%;   }

@@ -1,8 +1,8 @@
-$maxWidth: 1000px;
+@import 'grid';
 
 .main-content-region {
-  max-width: $maxWidth;
-  margin: 0 auto;
+  background-color: $neutral-light-x;
+  border-top: 1px solid #dce0e0;
 
   section.images,
   section.videos,
