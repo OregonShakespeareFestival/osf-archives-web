@@ -27,6 +27,17 @@ header.header-primary style="background-image: url('../images/header-bg-richard.
       .col-1-2
         .search-filter.filter-venues
           h3.filter-title Venue
+          ul.js-filters
+            li.filter-type-item
+              a{action 'filterByVenue' 'elizabethan'} class='active' data-type='elizabethan'
+                | Elizabethan
+            li.filter-type-item
+              a{action 'filterByVenue' 'thomas'} class='active' data-type='thomas'
+                | Thomas
+            li.filter-type-item
+              a{action 'filterByVenue' 'angus bowmer'} class='active' data-type='angus bowmer'
+                | Angus Bowmer
+            
 
   .row
     .page-container

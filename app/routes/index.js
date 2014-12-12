@@ -60,7 +60,7 @@ export default Ember.Route.extend({
   activeFilters: function() {
     var self = this;
     var filters = {};
-    $.extend(filters, self.yearFilter());
+    $.extend(filters, self.yearFilter(), self.venueFilter());
     return filters;
   },
 
@@ -83,16 +83,34 @@ export default Ember.Route.extend({
     return filter;
   },
 
+  venueFilter: function () {
+    var venueCount = $('.filter-venues .js-filters li ').length;
+    var activeVenues = $('.filter-venues .js-filters li .active');
+    var venues;
+
+    if (activeVenues.length < venueCount) {
+
+      venues = $.map($('.filter-venues .js-filters li .active'), function(venue){
+        return $(venue).attr('data-type');
+      });
+      return {venues:venues};
+    }
+  },
+
+  doSearch: function () {
+    var self = this;
+      
+    self.activeTypes().forEach( function(type) {
+      self.getData({ type: type }).then(function(response) {
+        self.bindData(response);
+        self.render(type, { into: 'index', outlet: type });
+      });
+    });
+  },
+
   actions: {
     search: function () {
-      var self = this;
-      
-      self.activeTypes().forEach( function(type) {
-        self.getData({ type: type }).then(function(response) {
-          self.bindData(response);
-          self.render(type, { into: 'index', outlet: type });
-        });
-      });
+      this.doSearch();
     },
 
     page: function (type, skipTo) {
@@ -123,6 +141,13 @@ export default Ember.Route.extend({
       } else {
         $('section.' + type).hide();
       }
+    },
+
+    filterByVenue: function (venue) {
+      var self = this;
+      var $filter = $('.js-filters [data-type=' + venue + ']');
+      $filter.toggleClass('active');
+      self.doSearch();
     }
 
     
