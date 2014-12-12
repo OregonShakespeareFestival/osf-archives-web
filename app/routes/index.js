@@ -3,18 +3,21 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   buildSearchQuery: function(options) {
     options = options || {};
+    var defaultPerPage = 8;
 
     if (!options.type) { throw new Error('Type is required.'); }
 
     var term = options.term ? options.term : $('.js-search').val();
-    var queryString = [];
-    var defaultPerPage = 8;
 
+    var filters = this.activeFilters();
+
+    var queryString = [];
     queryString.push('per_page=' + (options.per_page || defaultPerPage));
     queryString.push('page=' + (options.page || 1));
 
     queryString.push('q=' + term);
     queryString.push('t=' + options.type);
+    queryString.push($.param({filters:filters}));
 
     return OsfArchivesWeb.API_HOST + '/search_results.json?' + queryString.join('&');
   },
@@ -46,15 +49,45 @@ export default Ember.Route.extend({
     return parseInt(this.controllerFor(controller).get('model').current_page) + skipTo;
   },
 
+  activeTypes: function() {
+    var types = [];
+    $.each($('.filter-types .active'), function (){
+      types.push($(this).attr('data-type'));
+    });
+    return types;
+  },
+
+  activeFilters: function() {
+    var self = this;
+    var filters = {};
+    $.extend(filters, self.yearFilter());
+    return filters;
+  },
+
+  yearFilter: function () {
+    var $startYear = $('.js-filters input.start-year');
+    var $endYear = $('.js-filters input.end-year');
+
+    var startYear = $startYear.val();
+    var endYear = $endYear.val();
+
+    if (startYear === "" && endYear === "") { return; }
+    
+    var filter;
+    if (startYear === "" || endYear === "" || startYear === endYear) {
+      filter = { year:(startYear || endYear) };
+    } else {
+      filter = { years:[startYear, endYear] };
+    }
+
+    return filter;
+  },
+
   actions: {
     search: function () {
       var self = this;
-      var types = [];
-      $.each($('.js-filters .active'), function (){
-        types.push($(this).attr('data-type'));
-      });
-
-      types.forEach( function(type) {
+      
+      self.activeTypes().forEach( function(type) {
         self.getData({ type: type }).then(function(response) {
           self.bindData(response);
           self.render(type, { into: 'index', outlet: type });
@@ -70,7 +103,7 @@ export default Ember.Route.extend({
       });
     },
 
-    filter: function (type) {
+    filterByType: function (type) {
       var self = this;
       var $filter = $('.js-filters [data-type=' + type + ']');
       $filter.toggleClass('active');
@@ -91,6 +124,8 @@ export default Ember.Route.extend({
         $('section.' + type).hide();
       }
     }
+
+    
   }
 
 });

@@ -35,20 +35,30 @@ header.header-primary style="background-image: url('../images/header-bg-richard.
           h3.filter-title File Type
           ul.js-filters
             li.filter-type-item
-              a{action 'filter' 'images'} class='active' data-type='images'
+              a{action 'filterByType' 'images'} class='active' data-type='images'
                 | Images
             li.filter-type-item
-              a{action 'filter' 'videos'} class='active' data-type='videos'
+              a{action 'filterByType' 'videos'} class='active' data-type='videos'
                 | Videos
             li.filter-type-item
-              a{action 'filter' 'audios'} class='active' data-type='audios'
+              a{action 'filterByType' 'audios'} class='active' data-type='audios'
                 | Audios
             li.filter-type-item
-              a{action 'filter' 'articles'} class='active' data-type='articles'
+              a{action 'filterByType' 'articles'} class='active' data-type='articles'
                 | Documents
       .col-1-2
         .search-filter.filter-year
           h3.filter-title Year Range
+          ul.js-filters
+            li.filter-year-item
+              | Start
+              input.start-year
+            li.filter-year-item
+              | End
+              input.end-year
+            li.filter-year-item
+              button{action 'search'} class="btn-primary" type="button"
+                | Filter
   
 .main-content-region
   =outlet
