@@ -15,11 +15,15 @@
 }
 
 .grid-gallery figcaption h3 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
   margin: 0;
   padding: 0 0 0.5em;
 }
 
 .grid-gallery figcaption p {
+  color: #fff;
   margin: 0;
 }
 
@@ -41,18 +45,31 @@
 }
 
 .grid figure {
-  padding: 15px;
+  padding: 5px;
+  position: relative;
   -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
+
+  figcaption {
+    background: rgba(22,22,22,.88);
+    color: #fff;
+    padding: 25px;
+    opacity: 0;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    transition: opacity .3s;
+  }
+
+  &:hover figcaption {
+    opacity: 1;
+  }
 }
 
 .grid li:hover figure {
   opacity: 0.7;
-}
-
-.grid figcaption {
-  background: #e4e4e4;
-  padding: 25px;
 }
 
 /* Slideshow style */
