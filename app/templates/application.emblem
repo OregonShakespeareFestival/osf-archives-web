@@ -29,13 +29,13 @@ header.header-primary style="background-image: url('../images/header-bg-richard.
           h3.filter-title Venue
           ul.js-filters
             li.filter-type-item
-              a{action 'filterByVenue' 'elizabethan'} class='active' data-type='elizabethan'
+              a{action 'filterByVenue' 'Elizabethan'} class='active' data-type='Elizabethan'
                 | Elizabethan
             li.filter-type-item
-              a{action 'filterByVenue' 'thomas'} class='active' data-type='thomas'
+              a{action 'filterByVenue' 'Thomas'} class='active' data-type='Thomas'
                 | Thomas
             li.filter-type-item
-              a{action 'filterByVenue' 'angus bowmer'} class='active' data-type='angus bowmer'
+              a{action 'filterByVenue' 'Angus Bowmer'} class='active' data-type='Angus Bowmer'
                 | Angus Bowmer
             
 

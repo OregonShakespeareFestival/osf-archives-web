@@ -8,7 +8,6 @@ export default Ember.Route.extend({
     if (!options.type) { throw new Error('Type is required.'); }
 
     var term = options.term ? options.term : $('.js-search').val();
-
     var filters = this.activeFilters();
 
     var queryString = [];
@@ -145,7 +144,7 @@ export default Ember.Route.extend({
 
     filterByVenue: function (venue) {
       var self = this;
-      var $filter = $('.js-filters [data-type=' + venue + ']');
+      var $filter = $('.js-filters [data-type="' + venue + '"]');
       $filter.toggleClass('active');
       self.doSearch();
     }
