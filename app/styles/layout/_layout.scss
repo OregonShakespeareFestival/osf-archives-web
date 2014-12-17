@@ -1,5 +1,24 @@
 @import 'grid';
 
+.sidebar-container {
+  background-color: $neutral-dark;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  width: 50px;
+}
+
+.page-container {
+  padding-right: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  overflow-y: auto;
+}
+
 .main-content-region {
   background-color: $neutral-light-x;
   border-top: 1px solid #dce0e0;

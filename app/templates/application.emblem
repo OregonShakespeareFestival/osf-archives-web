@@ -1,76 +1,78 @@
-header.header-primary style="background-image: url('../images/header-bg-richard.jpg');"
-  .header-logo
-    img src="images/osf-logo.png" alt="Oregon Shakespeare Festival"/
-  nav.nav-primary
-    a.nav-primary__link href="#"
-      | Connect With Us
-    a.nav-primary__link href="#"
-      | Plan Your Visit
-    a.nav-primary__link href="#"
-      | Give and Join
-    a.nav-primary__link.btn-primary href="#"
-      | Buy Tickets
+.sidebar-container
 
-  h1.page-title Welcome to the Archive
-  .search-the-archive
-    =input class="js-search" placeholder="What are you looking for?" autofocus=true action="search" insert-newline="search"
-    button{action 'search'} class="btn-primary" type="button"
-      | Search
-.search-filters
-  .row
-    .page-container
-      .col-1-2
-        .search-filter.filter-works
-          h3.filter-title Work
-          select
-            option All Works
-      .col-1-2
-        .search-filter.filter-venues
-          h3.filter-title Venue
-          ul.js-filters
-            li.filter-type-item
-              a{action 'filterByVenue' 'Elizabethan'} class='active' data-type='Elizabethan'
-                | Elizabethan
-            li.filter-type-item
-              a{action 'filterByVenue' 'Thomas'} class='active' data-type='Thomas'
-                | Thomas
-            li.filter-type-item
-              a{action 'filterByVenue' 'Angus Bowmer'} class='active' data-type='Angus Bowmer'
-                | Angus Bowmer
-            
+.page-container
+  header.header-primary style="background-image: url('../images/header-bg-richard.jpg');"
+    .header-logo
+      img src="images/osf-logo.png" alt="Oregon Shakespeare Festival"/
+    nav.nav-primary
+      a.nav-primary__link href="#"
+        | Connect With Us
+      a.nav-primary__link href="#"
+        | Plan Your Visit
+      a.nav-primary__link href="#"
+        | Give and Join
+      a.nav-primary__link.btn-primary href="#"
+        | Buy Tickets
 
-  .row
-    .page-container
-      .col-1-2
-        .search-filter.filter-types
-          h3.filter-title File Type
-          ul.js-filters
-            li.filter-type-item
-              a{action 'filterByType' 'images'} class='active' data-type='images'
-                | Images
-            li.filter-type-item
-              a{action 'filterByType' 'videos'} class='active' data-type='videos'
-                | Videos
-            li.filter-type-item
-              a{action 'filterByType' 'audios'} class='active' data-type='audios'
-                | Audios
-            li.filter-type-item
-              a{action 'filterByType' 'articles'} class='active' data-type='articles'
-                | Documents
-      .col-1-2
-        .search-filter.filter-year
-          h3.filter-title Year Range
-          ul.js-filters
-            li.filter-year-item
-              | Start
-              input.start-year
-            li.filter-year-item
-              | End
-              input.end-year
-            li.filter-year-item
-              button{action 'search'} class="btn-primary" type="button"
-                | Filter
-  
-.main-content-region
-  =outlet
-footer
+    h1.page-title Welcome to the Archive
+    .search-the-archive
+      =input class="js-search" placeholder="What are you looking for?" autofocus=true action="search" insert-newline="search"
+      button{action 'search'} class="btn-primary" type="button"
+        | Search
+  .search-filters
+    .row
+      .section-container
+        .col-1-2
+          .search-filter.filter-works
+            h3.filter-title Work
+            select
+              option All Works
+        .col-1-2
+          .search-filter.filter-venues
+            h3.filter-title Venue
+            ul.js-filters
+              li.filter-venue-item
+                a{action 'filterByVenue' 'Elizabethan'} class='active' data-type='Elizabethan'
+                  | Elizabethan
+              li.filter-venue-item
+                a{action 'filterByVenue' 'Thomas'} class='active' data-type='Thomas'
+                  | Thomas
+              li.filter-venue-item
+                a{action 'filterByVenue' 'Angus Bowmer'} class='active' data-type='Angus Bowmer'
+                  | Angus Bowmer
+
+    .row
+      .section-container
+        .col-1-2
+          .search-filter.filter-types
+            h3.filter-title File Type
+            ul.js-filters
+              li.filter-type-item
+                a{action 'filter' 'images'} class='active' data-type='images'
+                  | Images
+              li.filter-type-item
+                a{action 'filter' 'videos'} class='active' data-type='videos'
+                  | Videos
+              li.filter-type-item
+                a{action 'filter' 'audios'} class='active' data-type='audios'
+                  | Audios
+              li.filter-type-item
+                a{action 'filter' 'articles'} class='active' data-type='articles'
+                  | Documents
+        .col-1-2
+          .search-filter.filter-year
+            h3.filter-title Year Range
+            ul.js-filters
+              li.filter-year-item
+                | Start
+                input.start-year
+              li.filter-year-item
+                | End
+                input.end-year
+              li.filter-year-item
+                button{action 'search'} class="btn-primary" type="button"
+                  | Filter
+    
+  .main-content-region
+    =outlet
+  footer

@@ -6,7 +6,7 @@ section.images
         li.grid-sizer
         = group
           = each model.data
-            li
+            li.card
               figure
                 img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
                 figcaption

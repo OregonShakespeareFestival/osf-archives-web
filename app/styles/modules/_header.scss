@@ -1,6 +1,8 @@
 .header-primary {
   @extend %centered-image;
   height: 80vh;
+  max-height: 600px;
+  min-height: 400px;
   position: relative;
 }
 
@@ -40,7 +42,8 @@
   text-align: center;
   text-shadow: 2px 0px 2px rgba(0,0,0, 0.38);
   text-transform: uppercase;
-  top: 35vh;
+  top: 50%;
+  transform: translatey(-50%);
   width: 100%;
 }
 
