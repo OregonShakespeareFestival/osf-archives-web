@@ -1,3 +1,10 @@
+.filter-year,
+.filter-venues {
+  .js-filters {
+    display: none;
+  }
+}
+
 .search-filters {
   & .row:first-of-type {
     border-bottom: 1px solid $neutral-light;
