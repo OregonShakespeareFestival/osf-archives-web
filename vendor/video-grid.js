@@ -177,8 +177,7 @@ var VideoGrid = (function() {
       // create Preview structure:
       this.$title = $( '<h3></h3>' );
       this.$description = $( '<p></p>' );
-      this.$href = $( '<a href="#">Visit website</a>' );
-      this.$details = $( '<div class="video-grid-details"></div>' ).append( this.$title, this.$description, this.$href );
+      this.$details = $( '<div class="video-grid-details"></div>' ).append( this.$title, this.$description);
       this.$video = $( '<video onclick="this.paused?this.play():this.pause();" class="video-grid-video" width="640" height="480" controls></video>' );
       this.$closePreview = $( '<span class="video-grid-close"></span>' );
       this.$previewInner = $( '<div class="video-grid-expander-inner"></div>' ).append( this.$closePreview, this.$video, this.$details );
@@ -212,7 +211,6 @@ var VideoGrid = (function() {
       // update preview´s content
       var $itemEl = this.$item.children( 'a' ),
         eldata = {
-          href : $itemEl.attr( 'href' ),
           webm : $itemEl.data( 'webm' ),
           ogg : $itemEl.data( 'ogg' ),
           mp4 : $itemEl.data( 'mp4' ),
@@ -222,7 +220,6 @@ var VideoGrid = (function() {
 
       this.$title.html( eldata.title );
       this.$description.html( eldata.description );
-      this.$href.attr( 'href', eldata.href );
 
       var self = this;
 

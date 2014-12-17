@@ -27,51 +27,51 @@
 .filter-type-item {
   float: left;
   margin-right: 15px;
+}
 
-  a {
-    background-image: url('../images/icons/icons-file-type.png');
+.file-type {
+  background-image: url('../images/icons/icons-file-type.png');
+  background-position: 0 -41px;
+  cursor: pointer;
+  display: block;
+  height: 40px;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 40px;
+
+  &[data-type="images"] {
     background-position: 0 -41px;
-    cursor: pointer;
-    display: block;
-    height: 40px;
-    overflow: hidden;
-    text-indent: -9999px;
-    width: 40px;
 
-    &[data-type="images"] {
-      background-position: 0 -41px;
-
-      &:hover,
-      &.active {
-        background-position: 0 0;
-      }
+    &:hover,
+    &.active {
+      background-position: 0 0;
     }
+  }
 
-    &[data-type="videos"] {
-      background-position: -42px -41px;
+  &[data-type="videos"] {
+    background-position: -42px -41px;
 
-      &:hover,
-      &.active {
-        background-position: -42px 0;
-      }
+    &:hover,
+    &.active {
+      background-position: -42px 0;
     }
+  }
 
-    &[data-type="audios"] {
-      background-position: -84px -41px;
+  &[data-type="audios"] {
+    background-position: -84px -41px;
 
-      &:hover,
-      &.active {
-        background-position: -84px 0;
-      }
+    &:hover,
+    &.active {
+      background-position: -84px 0;
     }
+  }
 
-    &[data-type="articles"] {
-      background-position: -126px -41px;
+  &[data-type="articles"] {
+    background-position: -126px -41px;
 
-      &:hover,
-      &.active {
-        background-position: -126px 0;
-      }
+    &:hover,
+    &.active {
+      background-position: -126px 0;
     }
   }
 }

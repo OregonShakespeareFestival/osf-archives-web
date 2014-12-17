@@ -12,3 +12,32 @@
   width: 100%;
   transform: translatex(-50%) translatey(-50%);
 }
+
+@mixin rounded-corners($radius: 3px) {
+  border-radius: $radius;
+}
+
+// Utility to simply strip units from any value.
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+// Rem with pixel fallback for font sizes.
+@mixin font-size($sizeValue: 14) {
+  $value: strip-unit($sizeValue);
+  font-size: #{$value + px};
+  font-size: #{($value / $base-font-size) + rem};
+}
+
+// Vertically center using line-height (not suitable for multiple lines of text).
+@mixin vertically-center($x: 20) {
+  $value: strip-unit($x);
+  height: #{$value + px};
+  line-height: #{$value + px};
+}
+
+// Create square dimenstions based on width, returns width & height.
+@mixin size($w, $h: $w) {
+  height: $h;
+  width: $w;
+}

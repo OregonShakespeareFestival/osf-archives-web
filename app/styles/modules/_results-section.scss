@@ -1,0 +1,34 @@
+.results-section {
+  margin-top: 50px;
+  padding-top: 34px;
+  position: relative;
+  border-top: 2px solid #d5d5d5;
+  text-align: center;
+}
+
+.results-section-title {
+  background-color: #f1f1f1;
+  color: #565a5c;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 16px;
+  padding: 0 10px;
+  position: relative;
+  top: -46px;
+}
+
+.sidebar-item {
+  padding: 0 5px;
+  position: absolute;
+  right: -50px;
+  top: -20px;
+  text-align: center;
+  width: 50px;
+}
+
+.file-type-count {
+  font-size: 12px;
+  padding: 6px 0;
+  margin: 0;
+}

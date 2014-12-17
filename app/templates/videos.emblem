@@ -1,11 +1,20 @@
-section.videos
-  h1 Videos
+section.results-section.videos
+  .sidebar-item
+    a.file-type{action 'filter' 'videos'} class='active' data-type='videos'
+      | Videos
+    p.file-type-count 22
+  h2.results-section-title Videos
   ul.js-videos-grid.videos-grid
     = group
       = each model.data
         li
-          a href="#" data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
-            img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+          a.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
+            img.card-figure-img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+            .card-content
+              h3.card-content-title
+                =title
+              h4.card-content-subtitle
+                | The Venue
   .paging
     if hasPreviousPage
       a{action 'page' 'videos' -1} href="#"

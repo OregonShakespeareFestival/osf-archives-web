@@ -48,16 +48,16 @@
             h3.filter-title File Type
             ul.js-filters
               li.filter-type-item
-                a{action 'filter' 'images'} class='active' data-type='images'
+                a.file-type{action 'filter' 'images'} class='active' data-type='images'
                   | Images
               li.filter-type-item
-                a{action 'filter' 'videos'} class='active' data-type='videos'
+                a.file-type{action 'filter' 'videos'} class='active' data-type='videos'
                   | Videos
               li.filter-type-item
-                a{action 'filter' 'audios'} class='active' data-type='audios'
+                a.file-type{action 'filter' 'audios'} class='active' data-type='audios'
                   | Audios
               li.filter-type-item
-                a{action 'filter' 'articles'} class='active' data-type='articles'
+                a.file-type{action 'filter' 'articles'} class='active' data-type='articles'
                   | Documents
         .col-1-2
           .search-filter.filter-year

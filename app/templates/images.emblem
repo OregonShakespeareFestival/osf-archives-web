@@ -1,5 +1,9 @@
-section.images
-  h1 Images
+section.results-section.images
+  .sidebar-item
+    a.file-type{action 'filter' 'images'} class='active' data-type='images'
+      | Images
+    p.file-type-count 324
+  h2.results-section-title Images
   #grid-gallery.grid-gallery
     section.grid-wrap
       ul.grid

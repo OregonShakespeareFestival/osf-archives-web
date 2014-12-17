@@ -1,5 +1,9 @@
-section.audios
-  h1 Audio
+section.results-section.audios
+  .sidebar-item
+    a.file-type{action 'filter' 'audios'} class='active' data-type='audios'
+      | Audios
+    p.file-type-count 10
+  h2.results-section-title Audio
   = group
     = each model.data
       img src="#{OsfArchivesWeb.API_HOST}#{thumb_url}"

@@ -22,17 +22,4 @@
 .main-content-region {
   background-color: $neutral-light-x;
   border-top: 1px solid #dce0e0;
-
-  section.images,
-  section.videos,
-  section.audios,
-  section.articles {
-    clear: both;
-    margin: 10px 0 0;
-    padding: 20px 0 0;
-
-    h1 {
-      text-align: center;
-    }
-  }
 }

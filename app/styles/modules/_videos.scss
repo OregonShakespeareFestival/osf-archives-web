@@ -29,7 +29,7 @@
       width: 0;
       position: absolute;
       pointer-events: none;
-      border-bottom-color: #ddd;
+      border-bottom-color: #434343;
       border-width: 15px;
       left: 50%;
       margin: -20px 0 0 -15px;
@@ -39,7 +39,7 @@
 
 .video-grid-expander {
   position: absolute;
-  background: #ddd;
+  background: #434343;
   top: auto;
   left: 0;
   width: 100%;
@@ -106,14 +106,14 @@
   }
 }
 
-.video-grid-video
-{
+.video-grid-video {
   background-color: #000;
   height: 100%;
   float: left;
 }
 
 .video-grid-details h3 {
+  color: #fff;
   font-weight: 300;
   font-size: 52px;
   padding: 40px 0 10px;
@@ -124,7 +124,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  color: #999;
+  color: #b3b3b3;
 }
 
 .video-grid-details a {

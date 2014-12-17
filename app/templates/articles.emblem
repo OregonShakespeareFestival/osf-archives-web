@@ -1,8 +1,12 @@
-section.articles
-  h1 Documents
+section.results-section.articles
+  .sidebar-item
+    a.file-type{action 'filter' 'articles'} class='active' data-type='articles'
+      | Articles
+    p.file-type-count 68
+  h2.results-section-title Documents
   = group
     = each model.data
-      a target="_blank" href="#{OsfArchivesWeb.API_HOST}#{url}"
+      a.card target="_blank" href="#{OsfArchivesWeb.API_HOST}#{url}"
         img src="#{OsfArchivesWeb.API_HOST}#{thumb_url}" alt=title
         = title
   .paging
