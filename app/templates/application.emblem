@@ -62,16 +62,7 @@
         .col-1-2
           .search-filter.filter-year
             h3.filter-title Year Range
-            ul.js-filters
-              li.filter-year-item
-                | Start
-                input.start-year
-              li.filter-year-item
-                | End
-                input.end-year
-              li.filter-year-item
-                button{action 'search'} class="btn-primary" type="button"
-                  | Filter
+            input.js-year-range
     
   .main-content-region
     =outlet

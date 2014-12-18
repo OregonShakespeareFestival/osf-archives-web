@@ -64,11 +64,9 @@ export default Ember.Route.extend({
   },
 
   yearFilter: function () {
-    var $startYear = $('.js-filters input.start-year');
-    var $endYear = $('.js-filters input.end-year');
-
-    var startYear = $startYear.val();
-    var endYear = $endYear.val();
+    var range = $('.js-year-range').val().split(';');
+    var startYear = range[0];
+    var endYear = range[1];
 
     if (startYear === "" && endYear === "") { return; }
     
@@ -96,9 +94,9 @@ export default Ember.Route.extend({
     }
   },
 
-  doSearch: function () {
+  doSearch: function (data) {
     var self = this;
-      
+
     self.activeTypes().forEach( function(type) {
       self.getData({ type: type }).then(function(response) {
         self.bindData(response);
@@ -108,8 +106,8 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    search: function () {
-      this.doSearch();
+    search: function (data) {
+      this.doSearch(data);
     },
 
     page: function (type, skipTo) {

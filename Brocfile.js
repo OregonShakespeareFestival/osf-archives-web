@@ -1,23 +1,15 @@
-/* global require, module */
-
+var mergeTrees = require('broccoli-merge-trees');
+var pickFiles = require('broccoli-static-compiler');
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
   autoprefixer: {}
 });
 
-// Use `app.import` to add additional libraries to the generated
-// output files.
-//
-// If you need to use different assets in different
-// environments, specify an object as the first parameter. That
-// object's keys should be the environment name and the values
-// should be the asset to use in that environment.
-//
-// If the library that you are including contains AMD or ES6
-// modules that you would like to import into your application
-// please specify an object with the list of modules as keys
-// along with the exports of each module as its value.
+app.import(app.bowerDirectory + '/ionrangeslider/js/ion.rangeSlider.min.js')
+app.import(app.bowerDirectory + '/ionrangeslider/css/ion.rangeSlider.css')
+app.import(app.bowerDirectory + '/ionrangeslider/css/ion.rangeSlider.skinNice.css')
+
 
 app.import('vendor/modernizr.custom.js')
 app.import('vendor/imagesloaded.pkgd.min.js')
@@ -27,4 +19,9 @@ app.import('vendor/cbpGridGallery.js')
 app.import('vendor/group-helper.js')
 app.import('vendor/video-grid.js')
 
-module.exports = app.toTree();
+var ionRangeSliderImages = pickFiles(app.bowerDirectory + '/ionrangeslider/img', {
+    srcDir: '/',
+    destDir: '/img'
+});
+
+module.exports = mergeTrees([app.toTree(), ionRangeSliderImages]);
