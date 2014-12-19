@@ -53,9 +53,10 @@ export default Ember.Route.extend({
   activeTypes: function() {
     var types = [];
     $.each($('.filter-types .active'), function (){
-      var options = { type: $(this).attr('data-type') }
-      if ($(this).attr('data-per-page'))
+      var options = { type: $(this).attr('data-type') };
+      if ($(this).attr('data-per-page')) {
         options.per_page = $(this).attr('data-per-page');
+      }
       types.push(options);
     });
     return types;
@@ -99,7 +100,7 @@ export default Ember.Route.extend({
     }
   },
 
-  doSearch: function (data) {
+  doSearch: function () {
     var self = this;
 
     self.activeTypes().forEach( function(options) {
