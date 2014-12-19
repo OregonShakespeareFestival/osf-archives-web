@@ -10,7 +10,7 @@ export default Ember.View.extend({
     var that = this;
     $('.js-year-range').ionRangeSlider({
       type: "double",
-      min: 1937,
+      min: 1935,
       max: currentYear,
       step: 1,
       onFinish: function () {
