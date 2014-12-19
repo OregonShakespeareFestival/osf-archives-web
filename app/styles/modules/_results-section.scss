@@ -1,9 +1,18 @@
 .results-section {
+  display: none;
   margin-top: 50px;
   padding-top: 34px;
   position: relative;
   border-top: 2px solid #d5d5d5;
   text-align: center;
+
+  &.is-active {
+    display:block;
+
+    &[data-total-items="0"] {
+      display: none;
+    }
+  }
 }
 
 .results-section-title {
@@ -32,3 +41,4 @@
   padding: 6px 0;
   margin: 0;
 }
+

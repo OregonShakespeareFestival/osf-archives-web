@@ -1,8 +1,8 @@
-section.results-section.audios
+section.results-section.audios.is-active data-total-items='{{unbound totalItems}}'
   .sidebar-item
     a.file-type{action 'filter' 'audios'} class='active' data-type='audios'
       | Audios
-    p.file-type-count 10
+    p.file-type-count {{totalItems}}
   h2.results-section-title Audio
   = group
     = each model.data

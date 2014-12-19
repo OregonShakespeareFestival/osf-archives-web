@@ -36,6 +36,7 @@ export default Ember.Route.extend({
 
     controller.set('hasPreviousPage', hasPreviousPage);
     controller.set('hasNextPage', hasNextPage);
+    controller.set('totalItems', total_items);
   },
 
   getData: function (options) {
@@ -122,21 +123,14 @@ export default Ember.Route.extend({
       var self = this;
       var $filter = $('.js-filters [data-type=' + type + ']');
       $filter.toggleClass('active');
-
+      $('section.' + type).toggleClass('is-active');
       // after a search just show hide container
       // TODO: Refactor this
-      if ($filter.hasClass('active')) {
-        if ($('section.' + type).length > 0) {
-          $('section.' + type).show();
-        }
-        else {
-          self.getData({ type: type }).then(function(response) {
-            self.bindData(response);
-            self.render(type, { into: 'index', outlet: type });
-          });
-        }
-      } else {
-        $('section.' + type).hide();
+      if ($filter.hasClass('active') && $('section.' + type).length === 0) {
+        self.getData({ type: type }).then(function(response) {
+          self.bindData(response);
+          self.render(type, { into: 'index', outlet: type });
+        });
       }
     },
 

@@ -1,8 +1,8 @@
-section.results-section.videos
+section.results-section.videos.is-active data-total-items='{{unbound totalItems}}'
   .sidebar-item
     a.file-type{action 'filter' 'videos'} class='active' data-type='videos'
       | Videos
-    p.file-type-count 22
+    p.file-type-count {{totalItems}}
   h2.results-section-title Videos
   ul.js-videos-grid.videos-grid
     = group

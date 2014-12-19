@@ -1,8 +1,8 @@
-section.results-section.images
+section.results-section.images.is-active data-total-items='{{unbound totalItems}}'
   .sidebar-item
     a.file-type{action 'filter' 'images'} class='active' data-type='images'
       | Images
-    p.file-type-count 324
+    p.file-type-count {{totalItems}}
   h2.results-section-title Images
   #grid-gallery.grid-gallery
     section.grid-wrap
