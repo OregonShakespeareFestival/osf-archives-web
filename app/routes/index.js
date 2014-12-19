@@ -1,17 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  defaultPerPage: 8,
   buildSearchQuery: function(options) {
     options = options || {};
-    var defaultPerPage = 8;
-
+    
     if (!options.type) { throw new Error('Type is required.'); }
 
     var term = options.term ? options.term : $('.js-search').val();
     var filters = this.activeFilters();
 
     var queryString = [];
-    queryString.push('per_page=' + (options.per_page || defaultPerPage));
+    queryString.push('per_page=' + (options.per_page || this.defaultPerPage));
     queryString.push('page=' + (options.page || 1));
 
     queryString.push('q=' + term);
@@ -25,7 +25,8 @@ export default Ember.Route.extend({
     // Set the resource type controller's model and render into outlet.
     // Given that response.type == 'images'
     var controller = this.controllerFor(response.type);
-    controller.set('model', response.data);
+    var model = response.data;
+    controller.set('model', model);
 
     // Paging
     var current_page = parseInt(controller.get('current_page'));
@@ -52,7 +53,10 @@ export default Ember.Route.extend({
   activeTypes: function() {
     var types = [];
     $.each($('.filter-types .active'), function (){
-      types.push($(this).attr('data-type'));
+      var options = { type: $(this).attr('data-type') }
+      if ($(this).attr('data-per-page'))
+        options.per_page = $(this).attr('data-per-page');
+      types.push(options);
     });
     return types;
   },
@@ -98,10 +102,10 @@ export default Ember.Route.extend({
   doSearch: function (data) {
     var self = this;
 
-    self.activeTypes().forEach( function(type) {
-      self.getData({ type: type }).then(function(response) {
+    self.activeTypes().forEach( function(options) {
+      self.getData(options).then(function(response) {
         self.bindData(response);
-        self.render(type, { into: 'index', outlet: type });
+        self.render(options.type, { into: 'index', outlet: options.type });
       });
     });
   },
