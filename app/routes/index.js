@@ -41,7 +41,7 @@ export default Ember.Route.extend({
   },
 
   getData: function (options) {
-    return Ember.$.getJSON(this.buildSearchQuery(options), function(response) {
+    return Ember.$.post(this.buildSearchQuery(options), function(response) {
       return response;
     });
   },
