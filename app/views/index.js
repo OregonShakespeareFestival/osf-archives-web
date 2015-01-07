@@ -12,6 +12,7 @@ export default Ember.View.extend({
       type: "double",
       min: 1935,
       max: currentYear,
+      hide_min_max: true,
       step: 1,
       onFinish: function () {
         that.set('target', that.controller.get('target'));

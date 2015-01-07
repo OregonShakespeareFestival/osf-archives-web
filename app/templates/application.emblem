@@ -24,45 +24,48 @@
       .section-container
         .col-1-2
           .search-filter.filter-works
-            h3.filter-title Work
-            select
-              option All Works
+            .search-filter-inner
+              h3.filter-title Work
+              select.works-list
+                option.work All Works
         .col-1-2
           .search-filter.filter-venues
-            h3.filter-title Venue
-            ul.js-filters
-              li.filter-venue-item
-                a{action 'filterByVenue' 'Elizabethan'} class='active' data-type='Elizabethan'
-                  | Elizabethan
-              li.filter-venue-item
-                a{action 'filterByVenue' 'Thomas'} class='active' data-type='Thomas'
-                  | Thomas
-              li.filter-venue-item
-                a{action 'filterByVenue' 'Angus Bowmer'} class='active' data-type='Angus Bowmer'
-                  | Angus Bowmer
-
+            .search-filter-inner
+              h3.filter-title Venue
+              ul.js-filters.filter-list
+                li.filter-venue-item
+                  a{action 'filterByVenue' 'Elizabethan'} class='active' data-type='Elizabethan'
+                    | Elizabethan
+                li.filter-venue-item
+                  a{action 'filterByVenue' 'Thomas'} class='active' data-type='Thomas'
+                    | Thomas
+                li.filter-venue-item
+                  a{action 'filterByVenue' 'Angus Bowmer'} class='active' data-type='Angus Bowmer'
+                    | Angus Bowmer
     .row
       .section-container
         .col-1-2
           .search-filter.filter-types
-            h3.filter-title File Type
-            ul.js-filters
-              li.filter-type-item
-                a.file-type{action 'filterByType' 'images'} class='active' data-type='images' data-per-page='15'
-                  | Images
-              li.filter-type-item
-                a.file-type{action 'filterByType' 'videos'} class='active' data-type='videos'
-                  | Videos
-              li.filter-type-item
-                a.file-type{action 'filterByType' 'audios'} class='active' data-type='audios'
-                  | Audios
-              li.filter-type-item
-                a.file-type{action 'filterByType' 'articles'} class='active' data-type='articles'
-                  | Documents
+            .search-filter-inner
+              h3.filter-title File Type
+              ul.js-filters.filter-list
+                li.filter-type-item
+                  a.file-type{action 'filterByType' 'images'} class='active' data-type='images' data-per-page='15'
+                    | Images
+                li.filter-type-item
+                  a.file-type{action 'filterByType' 'videos'} class='active' data-type='videos'
+                    | Videos
+                li.filter-type-item
+                  a.file-type{action 'filterByType' 'audios'} class='active' data-type='audios'
+                    | Audios
+                li.filter-type-item
+                  a.file-type{action 'filterByType' 'articles'} class='active' data-type='articles'
+                    | Documents
         .col-1-2
           .search-filter.filter-year
-            h3.filter-title Year Range
-            input.js-year-range
+            .search-filter-inner
+              h3.filter-title Year Range
+              input.js-year-range
     
   .main-content-region
     =outlet
