@@ -36,7 +36,7 @@ var VideoGrid = (function() {
   function init( config ) {
     // Get the grid and items here because they are loaded after this library loads.
     $grid = $('.js-videos-grid');
-    $items = $grid.children('li');
+    $items = $grid.children('.js-videos-container');
 
     // the settings..
     settings = $.extend( true, {}, settings, config );
@@ -107,7 +107,7 @@ var VideoGrid = (function() {
     $items.on( 'click', 'span.video-grid-close', function() {
       hidePreview();
       return false;
-    } ).children( 'a' ).on( 'click', function(e) {
+    } ).children( '.js-video' ).on( 'click', function(e) {
 
       var $item = $( this ).parent();
       // check if item already opened
@@ -191,8 +191,11 @@ var VideoGrid = (function() {
     },
     update : function( $item ) {
 
+      console.log(current);
+
       if( $item ) {
         this.$item = $item;
+        this.expandedIdx = $item.index();
       }
 
       // if already expanded remove class "video-grid-expanded" from current item and add it to new item
@@ -206,7 +209,8 @@ var VideoGrid = (function() {
       // TODO: Figure out how to not render the metamore script tags from Ember in the .videos-grid
       //        The extra <script> tags are causing the index to be 1 off.
       // update current value
-      current = this.$item.index('li');
+      current = this.$item.index();
+      console.log("changed to " + current);
 
       // update preview´s content
       var $itemEl = this.$item.children( 'a' ),
@@ -262,10 +266,12 @@ var VideoGrid = (function() {
 
       var self = this,
         onEndFn = function() {
+          console.log('callback happened');
           if( support ) {
             $( this ).off( transEndEventName );
           }
-          self.$item.removeClass( 'video-grid-expanded' );
+          // self.$item.removeClass( 'video-grid-expanded' );
+          $('.video-grid-expanded').removeClass( 'video-grid-expanded' );
           self.$previewEl.remove();
         };
 
@@ -277,8 +283,13 @@ var VideoGrid = (function() {
         this.$previewEl.css( 'height', 0 );
         // the current expanded item (might be different from this.$item)
         // TODO: Remove expandedIdx usage.
-        var $expandedItem = $('.video-grid-expanded');//$items.eq( this.expandedIdx );
-        $expandedItem.css( 'height', $expandedItem.data( 'height' ) ).on( transEndEventName, onEndFn );
+        // var $expandedItem = $('.video-grid-expanded');
+        console.log('expanded index: ' + this.expandedIdx);
+        var $expandedItem = $items.eq( this.expandedIdx );
+        console.log('Closing preview...should callback.');
+        console.log('expandedItem: ' + $expandedItem.data( 'height' ));
+        $expandedItem.css( 'height', $expandedItem.data( 'height' ) )
+          .on( transEndEventName, onEndFn );
 
         if( !support ) {
           onEndFn.call();

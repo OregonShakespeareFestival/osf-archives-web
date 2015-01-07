@@ -7,9 +7,46 @@ section.results-section.videos.is-active data-total-items='{{unbound totalItems}
   ul.js-videos-grid.videos-grid
     = group
       = each model.data
-        li
-          a.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
-            img.card-figure-img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+        li.js-videos-container.card-container
+          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
+            .card-figure-img
+              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+            .card-content
+              h3.card-content-title
+                =title
+              h4.card-content-subtitle
+                | The Venue
+        li.js-videos-container.card-container
+          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
+            .card-figure-img
+              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+            .card-content
+              h3.card-content-title
+                =title
+              h4.card-content-subtitle
+                | The Venue
+        li.js-videos-container.card-container
+          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
+            .card-figure-img
+              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+            .card-content
+              h3.card-content-title
+                =title
+              h4.card-content-subtitle
+                | The Venue
+        li.js-videos-container.card-container
+          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
+            .card-figure-img
+              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+            .card-content
+              h3.card-content-title
+                =title
+              h4.card-content-subtitle
+                | The Venue
+        li.js-videos-container.card-container
+          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
+            .card-figure-img
+              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
             .card-content
               h3.card-content-title
                 =title
