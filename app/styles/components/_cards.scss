@@ -52,7 +52,7 @@
     width: 100%;
     z-index: 1;
     
-    &.card__figure--wide
+    &.card__figure--wide {
       .card__figure__image {
         @extend %vertical-center;
         height: auto;
@@ -60,6 +60,7 @@
         max-width: 101%;
         width: 100%;
       }
+    }
 
     &.card__figure--tall {
       height: 270px;

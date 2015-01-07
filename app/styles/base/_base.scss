@@ -39,14 +39,6 @@ a img
   display: none;
 }
 
-%clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
 .main-content-region > .ember-view {
   height: 100%;
 }
