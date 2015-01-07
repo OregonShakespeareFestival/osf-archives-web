@@ -13,6 +13,14 @@
   transform: translatex(-50%) translatey(-50%);
 }
 
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 @mixin rounded-corners($radius: 3px) {
   border-radius: $radius;
 }

@@ -1,30 +1,119 @@
 %card,
 .card {
+  @extend %clearfix;
   @include rounded-corners;
   background-color: $white;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  display: block;
+  position: relative;
 }
 
-.card-content {
+.card__figure {
+  margin: 0;
+}
+
+.card__figure__image {
+  display: block;
+  width: 100%;
+}
+
+.card__content {
   padding: 10px 15px;
   text-align: left;
 }
 
-.card-content-title {
-  color: #5d5d5d;
-  font-size: 16px;
+.card__content__title {
+  color: #fff;
   font-weight: 600;
+  font-size: 15px;
+  margin: 0;
+  padding: 0 0 0.5em;
 }
 
-.card-content-subtitle {
+.card__content__subtitle {
   color: #989898;
   font-size: 14px;
   font-weight: 300;
 }
 
-.card-has-img {
+// CARD VARIATIONS
+.card--has-image {
+  .card__figure__image {
+    @include rounded-corners(3px 3px 0 0);
+  }
+}
 
-  .card-figure-img {
+.card--overlay-content {
+  .card__figure {
+    @include rounded-corners;
+    position: relative;
+    height: 130px;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1;
+    
+    &.card__figure--wide
+      .card__figure__image {
+        @extend %vertical-center;
+        height: auto;
+        min-height: 100%;
+        max-width: 101%;
+        width: 100%;
+      }
 
+    &.card__figure--tall {
+      height: 270px;
+
+      .card__figure__image {
+        max-height: 105%;
+        min-height: 101%;
+        max-width: none;
+        min-width: 101%;
+        width: auto;
+      }
+    }
+  }
+
+  .card__content {
+    @include rounded-corners;
+    background: rgba(66,66,66,.8);
+    border: 10px solid rgba(255,255,255,.4);
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    transition: opacity .4s;
+    z-index: 2;
+  }
+
+  &:hover .card__content {
+    opacity: 1;
+  }
+}
+
+// CARD GROUPING
+.card-grid {
+  // @extend %clearfix;
+  height: 300px;
+  list-style: none;
+  max-width: 69em;
+  margin: 0 auto;
+  padding: 0 0 20px;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  .card-container {
+    float: left;
+    width: 20%;
+    padding: 0 5px 10px;
   }
 }
