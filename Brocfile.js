@@ -18,6 +18,8 @@ app.import('vendor/classie.js')
 app.import('vendor/cbpGridGallery.js')
 app.import('vendor/group-helper.js')
 app.import('vendor/video-grid.js')
+app.import('vendor/isotope.pkgd.min.js')
+app.import('vendor/packery-mode.pkgd.min.js')
 
 var ionRangeSliderImages = pickFiles(app.bowerDirectory + '/ionrangeslider/img', {
     srcDir: '/',

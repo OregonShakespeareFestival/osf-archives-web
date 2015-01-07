@@ -1,73 +1,73 @@
-/* General style */
-.grid-gallery ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+// /* General style */
+// .grid-gallery ul {
+//   list-style: none;
+//   margin: 0;
+//   padding: 0;
+// }
 
-.grid-gallery figure {
-  margin: 0;
-}
+// .grid-gallery figure {
+//   margin: 0;
+// }
 
-.grid-gallery figure img {
-  @extend %card;
-  display: block;
-  width: 100%;
-}
+// .grid-gallery figure img {
+//   @extend %card;
+//   display: block;
+//   width: 100%;
+// }
 
-.grid-gallery figcaption h3 {
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-  margin: 0;
-  padding: 0 0 0.5em;
-}
+// .grid-gallery figcaption h3 {
+//   color: #fff;
+//   font-weight: 600;
+//   font-size: 16px;
+//   margin: 0;
+//   padding: 0 0 0.5em;
+// }
 
-.grid-gallery figcaption p {
-  color: #fff;
-  margin: 0;
-}
+// .grid-gallery figcaption p {
+//   color: #fff;
+//   margin: 0;
+// }
 
-/* Grid style */
-.grid-wrap {
-  max-width: 69em;
-  margin: 0 auto;
-  padding: 0 20px 20px;
-}
+// /* Grid style */
+// .grid-wrap {
+//   max-width: 69em;
+//   margin: 0 auto;
+//   padding: 0 20px 20px;
+// }
 
-.grid {
-  margin: 0 auto;
-}
+// .grid {
+//   margin: 0 auto;
+// }
 
-.grid li {
-  width: 20%;
-  float: left;
-  cursor: pointer;
-}
+// .grid li {
+//   width: 20%;
+//   float: left;
+//   cursor: pointer;
+// }
 
-.grid figure {
-  padding: 5px;
-  position: relative;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+// .grid figure {
+//   padding: 5px;
+//   position: relative;
+//   -webkit-transition: opacity 0.2s;
+//   transition: opacity 0.2s;
 
-  figcaption {
-    background: rgba(66,66,66,.88);
-    color: #fff;
-    padding: 25px;
-    opacity: 0;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    transition: opacity .3s;
-  }
+//   figcaption {
+//     background: rgba(66,66,66,.88);
+//     color: #fff;
+//     padding: 25px;
+//     opacity: 0;
+//     position: absolute;
+//     top: 15px;
+//     left: 15px;
+//     right: 15px;
+//     bottom: 15px;
+//     transition: opacity .3s;
+//   }
 
-  &:hover figcaption {
-    opacity: 1;
-  }
-}
+//   &:hover figcaption {
+//     opacity: 1;
+//   }
+// }
 
 /* Slideshow style */
 .slideshow {

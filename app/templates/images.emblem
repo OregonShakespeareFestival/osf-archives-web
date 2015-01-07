@@ -4,18 +4,31 @@ section.results-section.images.is-active data-total-items='{{unbound totalItems}
       | Images
     p.file-type-count {{totalItems}}
   h2.results-section-title Images
-  #grid-gallery.grid-gallery
-    section.grid-wrap
-      ul.grid
-        li.grid-sizer
-        = group
-          = each model.data
-            li
-              figure
-                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
-                figcaption
-                  h3
-                    =title
+  
+  ul.card-grid
+    = group
+      = each model.data
+        li.card-container
+          a.card.card--has-image.card--overlay-content
+            figure.card__figure
+              img.card__figure__image src="#{OsfArchivesWeb.API_HOST}#{url}" alt=title
+            .card__content
+              h1.card__content__title
+                =title
+
+
+  / #grid-gallery.grid-gallery
+  /   section.grid-wrap
+  /     ul.grid
+  /       li.grid-sizer
+  /       = group
+  /         = each model.data
+  /           li
+  /             figure
+  /               img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+  /               figcaption
+  /                 h3
+  /                   =title
     .paging
       if hasPreviousPage
         a{action 'page' 'images' -1} href="#"
