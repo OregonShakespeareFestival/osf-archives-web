@@ -55,11 +55,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'staging') {
-    ENV.APP.API_HOST = 'http://hydra.osfashland.org';
+    ENV.APP.API_HOST = 'http://sufia.osfashland.org';
   }
 
   if (environment === 'production') {
-    ENV.APP.API_HOST = 'http://hydra.osfashland.org';
+    ENV.APP.API_HOST = 'http://sufia.osfashland.org';
   }
 
   return ENV;
