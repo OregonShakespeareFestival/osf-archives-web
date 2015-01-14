@@ -1,4 +1,4 @@
-section.results-section.videos.is-active data-total-items='{{unbound totalItems}}'
+section.results-section.videos.is-active data-total-items='0'
   .sidebar-item
     a.file-type{action 'filter' 'videos'} class='active' data-type='videos'
       | Videos
@@ -10,7 +10,8 @@ section.results-section.videos.is-active data-total-items='{{unbound totalItems}
         li.js-videos-container.card-container
           a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
             .card-figure-img
-              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+              .card-figure-img-wrapper
+                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
             .card-content
               h3.card-content-title
                 =title
@@ -19,7 +20,8 @@ section.results-section.videos.is-active data-total-items='{{unbound totalItems}
         li.js-videos-container.card-container
           a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
             .card-figure-img
-              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+              .card-figure-img-wrapper
+                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
             .card-content
               h3.card-content-title
                 =title
@@ -28,7 +30,8 @@ section.results-section.videos.is-active data-total-items='{{unbound totalItems}
         li.js-videos-container.card-container
           a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
             .card-figure-img
-              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+              .card-figure-img-wrapper
+                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
             .card-content
               h3.card-content-title
                 =title
@@ -37,7 +40,8 @@ section.results-section.videos.is-active data-total-items='{{unbound totalItems}
         li.js-videos-container.card-container
           a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
             .card-figure-img
-              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+              .card-figure-img-wrapper
+                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
             .card-content
               h3.card-content-title
                 =title
@@ -46,16 +50,14 @@ section.results-section.videos.is-active data-total-items='{{unbound totalItems}
         li.js-videos-container.card-container
           a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
             .card-figure-img
-              img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+              .card-figure-img-wrapper
+                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
             .card-content
               h3.card-content-title
                 =title
               h4.card-content-subtitle
                 | The Venue
   .paging
-    if hasPreviousPage
-      a{action 'page' 'videos' -1} href="#"
-        | PREV
     if hasNextPage
       a{action 'page' 'videos' 1} href="#"
-        | NEXT
+        | More

@@ -1,4 +1,4 @@
-section.results-section.audios.is-active data-total-items='{{unbound totalItems}}'
+section.results-section.audios.is-active data-total-items='0'
   .sidebar-item
     a.file-type{action 'filter' 'audios'} class='active' data-type='audios'
       | Audios
@@ -10,9 +10,6 @@ section.results-section.audios.is-active data-total-items='{{unbound totalItems}
       audio controls="controls"
         source src="#{OsfArchivesWeb.API_HOST}#{url}"
   .paging
-    if hasPreviousPage
-      a{action 'page' 'audios' -1} href="#"
-        | PREV
     if hasNextPage
       a{action 'page' 'audios' 1} href="#"
-        | NEXT
+        | More

@@ -47,32 +47,32 @@
   .card__figure {
     @include rounded-corners;
     position: relative;
-    height: 130px;
+    // height: 130px;
     overflow: hidden;
     width: 100%;
     z-index: 1;
     
-    &.card__figure--wide {
-      .card__figure__image {
-        @extend %vertical-center;
-        height: auto;
-        min-height: 100%;
-        max-width: 101%;
-        width: 100%;
-      }
-    }
+    // &.card__figure--wide {
+    //   .card__figure__image {
+    //     @extend %vertical-center;
+    //     height: auto;
+    //     min-height: 100%;
+    //     max-width: 101%;
+    //     width: 100%;
+    //   }
+    // }
 
-    &.card__figure--tall {
-      height: 270px;
+    // &.card__figure--tall {
+    //   height: 270px;
 
-      .card__figure__image {
-        max-height: 105%;
-        min-height: 101%;
-        max-width: none;
-        min-width: 101%;
-        width: auto;
-      }
-    }
+    //   .card__figure__image {
+    //     max-height: 105%;
+    //     min-height: 101%;
+    //     max-width: none;
+    //     min-width: 101%;
+    //     width: auto;
+    //   }
+    // }
   }
 
   .card__content {
@@ -100,7 +100,7 @@
 // CARD GROUPING
 .card-grid {
   // @extend %clearfix;
-  height: 300px;
+  // height: 300px;
   list-style: none;
   max-width: 69em;
   margin: 0 auto;
@@ -117,4 +117,89 @@
     width: 20%;
     padding: 0 5px 10px;
   }
+
+  .grid-sizer {
+    width: 20%;
+  }
+}
+
+
+// VIDEO CARD
+.videos-grid {
+  max-width: 69em;
+  padding: 0 30px 0;
+
+  .card-container {
+    width: 24%;
+    margin: 0 1% 1% 0;
+  }
+
+  .card-figure-img {
+    position: relative;
+    background-color: #777;
+    overflow: hidden;
+    border-radius: 2px 2px 0 0;
+    
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 56.25%;
+    }
+
+    .card-figure-img-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      border: 0;
+      overflow: hidden;
+      border-radius: 2px 2px 0 0;
+    }
+
+    img {
+      position: relative;
+      height: auto;
+      width: 100%;
+      border-radius: 2px 2px 0 0;
+    }
+  }
+
+  .card-content-title {
+    font-size: 16px;
+    color: #5d5d5d;
+    text-align: left;
+    padding-left: 15px;
+  }
+
+  .card-content-subtitle {
+    font-size: 14px;
+    font-weight: 100;
+    text-align: left;
+    padding-left: 15px;
+  }
+}
+
+//ARTCILES
+
+.articles {
+  .card-figure-img {
+    position: relative;
+    background-color: #777;
+    overflow: hidden;
+    border-radius: 2px 2px 0 0;
+  }
+  
+  .card-content-title {
+    font-size: 16px;
+    color: #5d5d5d;
+    text-align: left;
+    padding-left: 15px;
+  }
+
+  .card-content-subtitle {
+    font-size: 14px;
+    font-weight: 100;
+    text-align: left;
+    padding-left: 15px;
+  }     
 }
