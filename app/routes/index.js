@@ -21,12 +21,18 @@ export default Ember.Route.extend({
     return OsfArchivesWeb.API_HOST + '/search_results.json?' + queryString.join('&');
   },
 
-  bindData: function (response) {
+  bindData: function (response, loadMore) {
     // Set the resource type controller's model and render into outlet.
     // Given that response.type == 'images'
+    loadMore = loadMore || false;
     var controller = this.controllerFor(response.type);
-    var model = response.data;
-    controller.set('model', model);
+    var responseModel = response.data;
+    var currentModel = controller.get('model');
+
+    if (loadMore && currentModel) {
+      responseModel.data = currentModel.data.concat(responseModel.data);
+    }
+    controller.set('model', responseModel);
 
     // Paging
     var current_page = parseInt(controller.get('current_page'));
@@ -103,10 +109,12 @@ export default Ember.Route.extend({
     }
   },
 
-  doSearch: function () {
+  doSearch: function (getFeaturedData) {
     var self = this;
 
     self.activeTypes().forEach( function(options) {
+      if (getFeaturedData)
+        options.term = 'featured';
       self.getData(options).then(function(response) {
         self.bindData(response);
         self.render(options.type, { into: 'index', outlet: options.type });
@@ -115,14 +123,14 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    search: function (data) {
-      this.doSearch(data);
+    search: function (getFeaturedData) {
+      this.doSearch(getFeaturedData);
     },
 
     page: function (type, skipTo) {
       var self = this;
       self.getData({ type: type, page: this.getPageIndex(type, skipTo) }).then(function(response) {
-        self.bindData(response);
+        self.bindData(response, true);
         self.render(type, { into: 'index', outlet: type });
       });
     },
