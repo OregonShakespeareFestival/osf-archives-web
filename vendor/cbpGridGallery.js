@@ -88,10 +88,10 @@
 	CBPGridGallery.prototype._initMasonry = function() {
 		var grid = this.grid;
 		imagesLoaded( grid, function() {
-			new Masonry( grid, {
-				itemSelector: 'li',
-				columnWidth: grid.querySelector( '.grid-sizer' )
-			});
+			new Isotope('.card-grid', {
+	      itemSelector: '.card-container',
+	      layoutMode: 'masonry'
+	    });
 		});
 	};
 

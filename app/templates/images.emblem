@@ -1,41 +1,40 @@
-section.results-section.images.is-active data-total-items='{{unbound totalItems}}'
+section.results-section.images.is-active data-total-items='0'
   .sidebar-item
     a.file-type{action 'filter' 'images'} class='active' data-type='images'
       | Images
     p.file-type-count {{totalItems}}
   h2.results-section-title Images
   
-  ul.card-grid
-    = group
-      = each model.data
-        li.card-container
-          a.card.card--has-image.card--overlay-content
-            figure.card__figure
-              img.card__figure__image src="#{OsfArchivesWeb.API_HOST}#{url}" alt=title
-            .card__content
-              h1.card__content__title
-                =title
+  / ul.card-grid
+  /   = group
+  /     = each model.data
+  /       li.card-container
+  /         a.card.card--has-image.card--overlay-content
+  /           figure.card__figure
+  /             img.card__figure__image src="#{OsfArchivesWeb.API_HOST}#{url}" alt=title
+  /           .card__content
+  /             h1.card__content__title
+  /               =title
 
 
-  / #grid-gallery.grid-gallery
-  /   section.grid-wrap
-  /     ul.grid
-  /       li.grid-sizer
-  /       = group
-  /         = each model.data
-  /           li
-  /             figure
-  /               img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
-  /               figcaption
-  /                 h3
-  /                   =title
+
+  #grid-gallery.grid-gallery
+    section.grid-wrap
+      ul.grid.card-grid
+        li.grid-sizer
+        = group
+          = each model.data
+            li.card-container
+              a.card.card--has-image.card--overlay-content
+                figure.card__figure
+                  img.card__figure__image src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
+                .card__content
+                  h1.card__content__title
+                    =title
     .paging
-      if hasPreviousPage
-        a{action 'page' 'images' -1} href="#"
-          | PREV
       if hasNextPage
         a{action 'page' 'images' 1} href="#"
-          | NEXT
+          | Load More
     section.slideshow
       ul
         = group
@@ -45,7 +44,7 @@ section.results-section.images.is-active data-total-items='{{unbound totalItems}
                 figcaption
                   h3
                     =title
-                img src="#{OsfArchivesWeb.API_HOST}#{url}" alt=title
+                img.slideshow-img src="#{OsfArchivesWeb.API_HOST}#{url}" alt=title
       nav
         span.icon.nav-prev
         span.icon.nav-next
