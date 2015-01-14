@@ -37,7 +37,7 @@ export default Ember.Route.extend({
 
     controller.set('hasPreviousPage', hasPreviousPage);
     controller.set('hasNextPage', hasNextPage);
-    controller.set('totalItems', total_items);
+    controller.set('totalItems', isNaN(total_items) ? 0 : total_items);
   },
 
   getData: function (options) {
@@ -73,12 +73,15 @@ export default Ember.Route.extend({
     var range = $('.js-year-range').val().split(';');
     var startYear = range[0];
     var endYear = range[1];
+    var indexController = this.controllerFor('index');
+    var minYear = indexController.get('minYear').toString();
+    var maxYear = indexController.get('maxYear').toString();
 
-    if (startYear === "" && endYear === "") { return; }
+    if (startYear === minYear && endYear === maxYear) { return; }
     
     var filter;
-    if (startYear === "" || endYear === "" || startYear === endYear) {
-      filter = { year:(startYear || endYear) };
+    if (startYear === endYear) {
+      filter = { year:(startYear) };
     } else {
       filter = { years:[startYear, endYear] };
     }

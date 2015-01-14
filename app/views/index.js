@@ -6,12 +6,11 @@ export default Ember.View.extend({
     Ember.run.scheduleOnce('afterRender', this, this.afterRenderEvent);
   },
   afterRenderEvent : function(){
-    var currentYear = new Date().getFullYear();
     var that = this;
     $('.js-year-range').ionRangeSlider({
       type: "double",
-      min: 1935,
-      max: currentYear,
+      min: this.get('controller.minYear'),
+      max: this.get('controller.maxYear'),
       hide_min_max: true,
       step: 1,
       onFinish: function () {
@@ -19,5 +18,8 @@ export default Ember.View.extend({
         that.send('search');
       }
     });
+
+    this.set('target', this.controller.get('target'));
+    this.send('search', true);
   }
 });
