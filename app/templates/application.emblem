@@ -26,8 +26,7 @@
           .search-filter.filter-works
             .search-filter-inner
               h3.filter-title Work
-              select.works-list
-                option.work All Works
+              =view 'Ember.Select' content=works optionLabelPath='content.title' optionValuePath='content.id' class='works-list'
         .col-1-2
           .search-filter.filter-venues
             .search-filter-inner
