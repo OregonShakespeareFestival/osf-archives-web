@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  work: undefined,
   init: function () {
     this.getWorks();
   },
@@ -10,9 +11,12 @@ export default Ember.Controller.extend({
     
     return Ember.$.post(url, function(response) {
       that.set('works', response.works);
-      return 
+      return;
     });
-  }
+  },
+  filterByWork: function () {
+    this.send('search')
+  }.observes('work')
 
 });
 
