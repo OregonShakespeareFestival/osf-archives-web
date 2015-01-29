@@ -35,6 +35,23 @@
       margin: -20px 0 0 -15px;
     }
   }
+
+  .card__content {
+    min-height: 56px;
+    overflow: hidden;
+  }
+  
+  .card__content__title {
+    color: #5d5d5d;
+  }
+
+  .card__content__date {
+    bottom: 11px;
+    left: initial;
+    right: 15px;
+    margin: 0;
+    color: #989898;
+  }
 }
 
 .video-grid-expander {
@@ -114,16 +131,15 @@
 
 .video-grid-details h3 {
   color: #fff;
-  font-weight: 300;
-  font-size: 52px;
+  font-weight: 600;
+  font-size: 22px;
   padding: 40px 0 10px;
   margin-bottom: 10px;
 }
 
 .video-grid-details p {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
+  font-weight: 300;
+  font-size: 14px;
   color: #b3b3b3;
 }
 

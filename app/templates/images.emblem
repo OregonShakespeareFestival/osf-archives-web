@@ -30,7 +30,9 @@ section.results-section.images.is-active data-total-items='0'
                   img.card__figure__image src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
                 .card__content
                   h1.card__content__title
-                    =title
+                    =metadata.title
+                  p.card__content__date
+                    =metadata.date_created
     .paging
       if hasNextPage
         a{action 'page' 'images' 1} href="#"
@@ -41,10 +43,19 @@ section.results-section.images.is-active data-total-items='0'
           = each model.data
             li
               figure
-                figcaption
-                  h3
-                    =title
                 img.slideshow-img src="#{OsfArchivesWeb.API_HOST}#{url}" alt=title
+              figcaption
+                h3
+                  =metadata.title
+                p
+                  =metadata.production_name
+                p
+                  =metadata.venue_name
+                p
+                  =metadata.description
+                p
+                  =metadata.date_created
+                
       nav
         span.icon.nav-prev
         span.icon.nav-next

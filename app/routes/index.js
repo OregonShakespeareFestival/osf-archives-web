@@ -33,7 +33,6 @@ export default Ember.Route.extend({
       responseModel.data = currentModel.data.concat(responseModel.data);
     }
     controller.set('model', responseModel);
-
     // Paging
     var current_page = parseInt(controller.get('current_page'));
     var total_items = parseInt(controller.get('total_items'));

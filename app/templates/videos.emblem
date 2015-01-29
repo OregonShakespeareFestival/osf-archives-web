@@ -8,55 +8,17 @@ section.results-section.videos.is-active data-total-items='0'
     = group
       = each model.data
         li.js-videos-container.card-container
-          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
+          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title="#{metadata.title}" data-description="#{metadata.description}" data-description="#{metadata.venue_name}" 
             .card-figure-img
               .card-figure-img-wrapper
                 img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
-            .card-content
-              h3.card-content-title
-                =title
-              h4.card-content-subtitle
-                | The Venue
-        li.js-videos-container.card-container
-          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
-            .card-figure-img
-              .card-figure-img-wrapper
-                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
-            .card-content
-              h3.card-content-title
-                =title
-              h4.card-content-subtitle
-                | The Venue
-        li.js-videos-container.card-container
-          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
-            .card-figure-img
-              .card-figure-img-wrapper
-                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
-            .card-content
-              h3.card-content-title
-                =title
-              h4.card-content-subtitle
-                | The Venue
-        li.js-videos-container.card-container
-          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
-            .card-figure-img
-              .card-figure-img-wrapper
-                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
-            .card-content
-              h3.card-content-title
-                =title
-              h4.card-content-subtitle
-                | The Venue
-        li.js-videos-container.card-container
-          a.js-video.card.card-has-img data-webm="#{OsfArchivesWeb.API_HOST}#{webm_url}" data-mp4="#{OsfArchivesWeb.API_HOST}#{mp4}" data-title=title data-description=description
-            .card-figure-img
-              .card-figure-img-wrapper
-                img src="#{OsfArchivesWeb.API_HOST}#{thumbnail_url}" alt=title
-            .card-content
-              h3.card-content-title
-                =title
-              h4.card-content-subtitle
-                | The Venue
+            .card__content
+              h3.card__content__title
+                =metadata.title
+              h4.card__content__subtitle
+                =metadata.venue_name
+              p.card__content__date
+                =metadata.date_created
   .paging
     if hasNextPage
       a{action 'page' 'videos' 1} href="#"

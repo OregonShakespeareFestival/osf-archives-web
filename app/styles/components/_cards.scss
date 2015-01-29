@@ -19,6 +19,7 @@
 
 .card__content {
   padding: 10px 15px;
+  position: relative;
   text-align: left;
 }
 
@@ -27,13 +28,25 @@
   font-weight: 600;
   font-size: 15px;
   margin: 0;
+  max-width: 97%;
   padding: 0 0 0.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card__content__subtitle {
   color: #989898;
   font-size: 14px;
   font-weight: 300;
+}
+
+.card__content__date {
+  bottom: 0px;
+  font-size: 12px;
+  font-weight: 300;
+  position: absolute;
+  left: 10px;
 }
 
 // CARD VARIATIONS
