@@ -117,14 +117,16 @@ export default Ember.Route.extend({
 
   doSearch: function (getFeaturedData) {
     var self = this;
-
+    self.send('showSearchResults');
     self.activeTypes().forEach( function(options) {
-      if (getFeaturedData)
+      if (getFeaturedData) {
         options.term = 'featured';
+      }
       self.getData(options).then(function(response) {
         self.bindData(response);
         self.render(options.type, { into: 'index', outlet: options.type });
       });
+      
     });
   },
 
@@ -161,6 +163,30 @@ export default Ember.Route.extend({
       var $filter = $('.js-filters [data-type="' + venue + '"]');
       $filter.toggleClass('active');
       self.doSearch();
+    },
+
+    showTerms: function () {
+      // var self = this;
+      var terms_url = OsfArchivesWeb.API_HOST + '/public_terms.js';
+      return Ember.$.get(terms_url, function(response) {
+        $('.main-content-region .container').hide();
+        $('.main-content-region .static-container').show();
+        $('.main-content-region .static-container .static-page').html(response);
+      });
+    },
+    showAbout: function () {
+      // var self = this;
+      var terms_url = OsfArchivesWeb.API_HOST + '/public_about.js';
+      return Ember.$.get(terms_url, function(response) {
+        $('.main-content-region .container').hide();
+        $('.main-content-region .static-container').show();
+        $('.main-content-region .static-container .static-page').html(response);
+      });
+    },
+
+    showSearchResults: function () {
+      $('.main-content-region .container').show();
+      $('.main-content-region .static-container').hide();
     }
 
     

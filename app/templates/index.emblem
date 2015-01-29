@@ -3,3 +3,6 @@
   outlet videos
   outlet audios
   outlet articles
+.static-container
+  a{action 'showSearchResults'} Back to Search Results
+  .static-page 

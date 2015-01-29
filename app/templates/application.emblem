@@ -69,3 +69,11 @@
   .main-content-region
     =outlet
   footer
+    ul
+      li
+        a{action 'showAbout'} 
+          | About
+      li
+        a{action 'showTerms'} 
+          | Terms of Use
+      
