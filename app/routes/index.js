@@ -70,7 +70,7 @@ export default Ember.Route.extend({
   activeFilters: function() {
     var self = this;
     var filters = {};
-    $.extend(filters, self.yearFilter(), self.venueFilter());
+    $.extend(filters, self.yearFilter(), self.venueFilter(), self.workFilter());
     return filters;
   },
 
@@ -105,6 +105,13 @@ export default Ember.Route.extend({
         return $(venue).attr('data-type');
       });
       return {venues:venues};
+    }
+  },
+
+  workFilter: function () {
+    var work = $('select.works-list').val();
+    if (work !== "") {
+      return {work:work};
     }
   },
 
